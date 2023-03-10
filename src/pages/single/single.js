@@ -15,7 +15,7 @@ const Single = () => {
   useEffect(() => {
     let clientId = window.location.pathname.split("/")[3];
       axios
-      .get("http://localhost:3001/api/client/"+clientId)
+      .get("/backend/api/client/"+clientId)
       .then((res) => {
         setData(res.data[0]);
         console.log(res.data)

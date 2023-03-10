@@ -10,7 +10,7 @@ const Table = (props) => {
 
   useEffect(() => {
     axios
-    .get("http://localhost:3001/api/clients")
+    .get("/backend/api/clients")
     .then((res) => {
       let data = [];
       let newData = {

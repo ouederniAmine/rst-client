@@ -19,7 +19,7 @@ const Sidebar = () => {
 
     //api call to check if user is admin
     const checkAdmin = async () => {
-        const response = await fetch(`http://localhost:3001/api/checkadmin/${authService.getCurrentUser().userid}`);
+        const response = await fetch(`/backend/api/checkadmin/${authService.getCurrentUser().userid}`);
         const data = await response.json();
         console.log(data);
         if (data.isAdmin) {

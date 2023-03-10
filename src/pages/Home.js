@@ -17,7 +17,7 @@ export default function HomePage(){
         console.log(authService.getCurrentUser());
             checkAdmin();
             axios
-            .get("http://localhost:3001/api/client/"+authService.getCurrentUser().userid)
+            .get("/backend/api/client/"+authService.getCurrentUser().userid)
             .then((res) => {
               setData(res.data[0]);
               console.log(res.data)
@@ -30,7 +30,7 @@ export default function HomePage(){
 
         //api call to check if user is admin
         const checkAdmin = async () => {
-            const response = await fetch(`http://localhost:3001/api/checkadmin/${authService.getCurrentUser().userid}`);
+            const response = await fetch(`/backend/api/checkadmin/${authService.getCurrentUser().userid}`);
             const data = await response.json();
             console.log(data);
             if (data.isAdmin) {

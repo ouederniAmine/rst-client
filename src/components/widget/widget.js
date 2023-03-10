@@ -16,7 +16,7 @@ const Widget = ({ type }) => {
   });
   useEffect(() => {
         axios
-        .get("http://localhost:3001/api/client/"+authService.getCurrentUser().userid)
+        .get("/backend/api/client/"+authService.getCurrentUser().userid)
         .then((res) => {
           setApiData(res.data[0]);
           console.log(res.data)

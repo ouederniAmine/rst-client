@@ -12,7 +12,7 @@ const VariableTable = (props) => {
   // get the variable list from server
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/fullVariable")
+      .get("/backend/api/fullVariable")
       .then((res) => {
         let newData = {
           id:0,
@@ -51,7 +51,7 @@ const VariableTable = (props) => {
   const handleDelete = (id) => {
     // delete the variable from server
     axios
-      .delete("http://localhost:3001/api/variable/" + id)
+      .delete("/backend/api/variable/" + id)
       .then((res) => {
         console.log(res);
       })

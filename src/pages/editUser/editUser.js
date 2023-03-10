@@ -17,7 +17,7 @@ const EditUser = ({ inputs, title }) => {
   const sendData = () => {
     let clientId = window.location.pathname.split("/")[4];
     axios
-      .put("http://localhost:3001/api/client/" +clientId, data)
+      .put("/api/client/" +clientId, data)
       .then((res) => {
         console.log(res);
         navigate("/app/clients/");
@@ -30,7 +30,7 @@ const EditUser = ({ inputs, title }) => {
   useEffect(() => {
     let clientId = window.location.pathname.split("/")[4];
       axios
-      .get("http://localhost:3001/api/client/"+clientId)
+      .get("/api/client/"+clientId)
       .then((res) => {
         setData(res.data[0]);
         console.log(res.data)

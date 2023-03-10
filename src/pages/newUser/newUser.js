@@ -17,7 +17,7 @@ const NewUser = ({ inputs, title }) => {
   const sendData = () => {
 
     axios
-      .post("http://localhost:3001/api/client", data)
+      .post("/backend/api/client", data)
       .then((res) => {
         navigate("/app/clients");
         console.log(res);
