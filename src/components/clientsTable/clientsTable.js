@@ -11,7 +11,7 @@ const ClientsTable = (props) => {
 
   useEffect(() => {
       axios
-      .get("http://localhost:3001/api/clients")
+      .get("/backend/api/clients")
       .then((res) => {
         let data = [];
         let newData = {
@@ -82,7 +82,7 @@ const ClientsTable = (props) => {
   const handleDelete = (id) => {
     //delete invoice from database
     axios
-      .delete("http://localhost:3001/api/client/" + id)
+      .delete("/backend/api/client/" + id)
       .then((res) => {
         console.log(res);
       })
