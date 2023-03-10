@@ -1,0 +1,117 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+#include<string.h>
+typedef struct element element;
+struct element{
+int x;
+int y;
+element* nxt;
+};
+typedef struct snake snake;
+struct snake{
+struct element*premier;
+};
+void ajoutertete(snake* L, int x,int y)
+{
+ struct element* nouv;
+
+ nouv = (struct element*) malloc(sizeof(struct element));
+ nouv->x=x;
+ nouv->y=y;
+ nouv->nxt=NULL;
+nouv->nxt=L;
+L=nouv;
+return(L);
+}
+void supprimerqueue(element* L)
+{
+struct element* tmp, c;
+if (L!=NULL)
+{
+ if(L->nxt==NULL){
+  free(L);
+  L=NULL; }
+
+else{
+ tmp=L;
+ c=*L;
+ while(tmp->nxt!=NULL){
+ c =*tmp;
+ tmp=tmp->nxt;
+ }
+c.nxt=NULL;
+free(tmp);
+ }
+}
+return L;
+}
+snake* mouvement(snake *L,char direction){
+    switch (direction){
+        case 'est':
+        if (L->premier->x!=9)
+        ajoutertete(L,L->premier->x+1,L->premier->y);
+
+        else
+            ajoutertete(L,0,L->premier->y);
+        supprimerqueue(L);
+        break;
+        case 'ouest':
+        if (L->premier->x!=0){
+        ajoutertete(L,L->premier->x+1,L->premier->y);
+        }
+        else{
+            ajoutertete(L,9,L->premier->y);
+        }
+        supprimerqueue(L);
+        break;
+        case 'nord':
+        if (L->premier->y!=0)
+        ajoutertete(L,L->premier->x,L->premier->y+1);
+
+        else
+            ajoutertete(L,L->premier->x,9);
+        supprimerqueue(L);
+        break;
+        case 'sud':
+        if (L->premier->y!=9)
+        ajoutertete(L,L->premier->x,L->premier->y+1);
+
+        else
+            ajoutertete(L,L->premier->x,0);
+        supprimerqueue(L);
+        break;
+    };
+    return L;
+}
+void afficher(snake *L)
+{
+struct element* tmp=L;
+if(L==NULL)
+printf("la liste est vide");
+else
+{
+while (tmp!=NULL)
+{
+printf("%d",tmp->x);
+printf("%d",tmp->y);
+tmp=tmp->nxt;
+}
+}}
+int main()
+{
+    int x;
+    int y;
+    char direction;
+    snake* L=malloc(sizeof(snake));
+    element* E=malloc(sizeof(element));
+    ajoutertete(L,x,y);
+    ajoutertete(L,x,y);
+    ajoutertete(L,x,y);
+    printf("donner direction");
+    scanf("%d",direction);
+    afficher(L);
+}
+
+
+
