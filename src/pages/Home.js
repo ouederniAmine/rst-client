@@ -6,47 +6,14 @@ import Navbar from '../components/navbar/navbar';
 import Widget from '../components/widget/widget';
 import Invoicetable from '../components/table/table';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import authService from '../services/auth.service';
-export default function HomePage(){
-        const [admin, setAdmin] = useState(false);
-        const [data, setData] = useState({
-            fullname :"",  'email':"", 'pwd':"", 'current_balance':0, 'funds_on_hold':0, 'withdrawable_balance':0, 'date_of_birth':"", 'country':"", 'company_name':"", 'account_number':0, 'btc_wallet':"", 'bank_name':"", 'swift':0, 'iban':0, beneficiary_name:"", beneficiary_address:"", contact_information:"", bank_address:""
-          });
-        //useEffect to check if user is admin
-        useEffect(() => {
-        console.log(authService.getCurrentUser());
-            checkAdmin();
-            axios
-            .get("/backend/api/client/"+authService.getCurrentUser().userid)
-            .then((res) => {
-              setData(res.data[0]);
-              console.log(res.data)
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }, []);
-        
-
-        //api call to check if user is admin
-        const checkAdmin = async () => {
-            const response = await fetch(`/backend/api/checkadmin/${authService.getCurrentUser().userid}`);
-            const data = await response.json();
-            console.log(data);
-            if (data.isAdmin) {
-                setAdmin(true);
-            } else {
-                setAdmin(false);
-            }
-        }
-      
-    return(
-        <div className='home'>
-
-        <Sidebar/>
-    
-        {
-        (!admin) ? (<> <div className="homeContainer">
+const Home = (props) => {
+    return (
+        <>
+              {
+        (!props.admin) ? (<> <div className="homeContainer">
                 <Navbar/>
 
                 <div className='widgets'>
@@ -70,27 +37,27 @@ export default function HomePage(){
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">First Name</div>
-                                <div class="px-4 py-2">{data.fullname}</div>
+                                <div class="px-4 py-2">{props.data.fullname}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Last Name</div>
-                                <div class="px-4 py-2">{data.email}</div>
+                                <div class="px-4 py-2">{props.data.email}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">country</div>
-                                <div class="px-4 py-2">{data.country}</div>
+                                <div class="px-4 py-2">{props.data.country}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">company_name</div>
-                                <div class="px-4 py-2">{data.company_name}</div>
+                                <div class="px-4 py-2">{props.data.company_name}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">account_number</div>
-                                <div class="px-4 py-2">{data.account_number}</div>
+                                <div class="px-4 py-2">{props.data.account_number}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Permanant Address</div>
-                                <div class="px-4 py-2">{data.bank_address}</div>
+                                <div class="px-4 py-2">{props.data.bank_address}</div>
                             </div>
                             
                         </div>
@@ -113,6 +80,51 @@ export default function HomePage(){
                 </div>
                 </div></>)
 }
+        </>
+    )
+}
+
+export default function HomePage(){
+        const [admin, setAdmin] = useState(false);
+        const [data, setData] = useState({
+            fullname :"",  'email':"", 'pwd':"", 'current_balance':0, 'funds_on_hold':0, 'withdrawable_balance':0, 'date_of_birth':"", 'country':"", 'company_name':"", 'account_number':0, 'btc_wallet':"", 'bank_name':"", 'swift':0, 'iban':0, beneficiary_name:"", beneficiary_address:"", contact_information:"", bank_address:""
+          });
+        const [loading, setLoading] = useState(true);
+        useEffect(() => {
+        console.log(authService.getCurrentUser());
+            checkAdmin();
+            axios
+            .get("/backend/api/client/"+authService.getCurrentUser().userid)
+            .then((res) => {
+              setData(res.data[0]);
+              console.log(res.data)
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }, []);
+        
+
+        //api call to check if user is admin
+        const checkAdmin = async () => {
+            const response = await fetch(`/backend/api/checkadmin/${authService.getCurrentUser().userid}`);
+            const data = await response.json();
+            console.log(data);
+            if (data.isAdmin) {
+                setAdmin(true);
+                setLoading(false);
+            } else {
+                setAdmin(false);
+                setLoading(false);
+            }
+        }
+      
+    return(
+        <div className='home'>
+
+        <Sidebar/>
+    {loading ? <Skeleton height={40} count={5} /> :  <Home admin={admin} data={data}/>}
+       
            
         </div>
     )

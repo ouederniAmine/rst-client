@@ -1,16 +1,17 @@
 import "./sidebar.css";
 import { Modal } from 'flowbite';
 
-
 import authService from '../../services/auth.service';
 import { useNavigate } from 'react-router-dom';
 import img from "../../assets/Bedaya.png";
 import { useState ,useEffect } from "react";
+
 const Sidebar = () => {
     const navigate = useNavigate();
     const $targetEl = document.getElementById('small-modal');
     const modal = new Modal($targetEl);
     const [admin, setAdmin] = useState(false);
+    const[loading,setLoading]=useState(true);
     //useEffect to check if user is admin
     useEffect(() => {
       console.log(authService.getCurrentUser());
@@ -24,8 +25,10 @@ const Sidebar = () => {
         console.log(data);
         if (data.isAdmin) {
             setAdmin(true);
+            setLoading(false);
         } else {
             setAdmin(false);
+            setLoading(false);
         }
     }
     const signOutUser = () => {authService.logout()
@@ -38,24 +41,25 @@ const Sidebar = () => {
     className={` ${
       open ? "w-72" : "w-20 "
     } bg h-screen p-5  pt-8 relative duration-300`}
-  >  <> {admin ? (<>
-  <img
-    src="https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/control.png"
-    className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
-     border-2 rounded-full  ${!open && "rotate-180"}`}
-    onClick={() => setOpen(!open)} alt="logo"
-  />
-  <div className="flex gap-x-4 items-center">
-    <img
-      src={img}
-      className={`logo cursor-pointer duration-500 ${
-        open && "rotate-[360deg]"
-      }`}
-      style={{ width: "50%" }} alt="logo"
-    />
-    
-    
-  </div>
+  >   <img
+  src="https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/control.png"
+  className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+   border-2 rounded-full  ${!open && "rotate-180"}`}
+  onClick={() => setOpen(!open)} alt="logo"
+/>
+<div className="flex gap-x-4 items-center">
+      <img
+        src={img}
+        className={`logo cursor-pointer duration-500 ${
+          open && "rotate-[360deg]" 
+        }`}
+        style={{ width: "50%" }} alt="logo"
+      />
+      
+      
+    </div>{!loading  ? ( <> {admin ? (<>
+ 
+  
   <ul className="pt-6 flex flex-col space-y-4">
     
       <li
@@ -131,24 +135,8 @@ const Sidebar = () => {
         </div>
     </div>
 </div>
-    <img
-      src="https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/control.png"
-      className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
-       border-2 rounded-full  ${!open && "rotate-180"}`}
-      onClick={() => setOpen(!open)} alt="logo"
-
-    />
-    <div className="flex gap-x-4 items-center">
-      <img
-        src={img}
-        className={`logo cursor-pointer duration-500 ${
-          open && "rotate-[360deg]" 
-        }`}
-        style={{ width: "50%" }} alt="logo"
-      />
-      
-      
-    </div>
+    
+    
     <div id="small-modal"  class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
   <div class="relative w-full h-full max-w-md md:h-auto">
 
@@ -237,7 +225,7 @@ const Sidebar = () => {
         </li> 
       
     </ul></>)}
-   </>
+   </>):(<></>)}
   </div>
 </div>
 );
