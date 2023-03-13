@@ -72,11 +72,11 @@ const Single = () => {
                                 <div class="px-4 py-2">{data.contact_information}</div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">company_name</div>
+                                <div class="px-4 py-2 font-semibold">Company Name</div>
                                 <div class="px-4 py-2">{data.company_name}</div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">account_number</div>
+                                <div class="px-4 py-2 font-semibold">Account Number</div>
                                 <div class="px-4 py-2">{data.account_number}</div>
                             </div>
                             <div class="grid grid-cols-2">
