@@ -27,6 +27,16 @@ const EditUser = ({ inputs, title }) => {
       });
   };
 
+  const resetPassword = () => {
+    const email = data.email;
+    axios
+    .post("/backend/api/forget-password", {email})
+    .then((res) => {
+      console.log(res);
+      navigate("/app/clients/");
+    }
+    )}
+
   useEffect(() => {
     let clientId = window.location.pathname.split("/")[4];
       axios
@@ -78,14 +88,14 @@ Email      </label>
   <div className="flex flex-wrap -mx-3 mb-6">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
-        Password
+        Reset Client Password
       </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="************"  value={"************"} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        pwd: e.target.value
-      });
-      
-      }}/>
+      <button type="button" onClick={(e)=>{
+        e.preventDefault();
+        resetPassword()
+
+      }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Send Reset Password to Client</button>
+
     </div>
   </div> 
   <div className="flex flex-wrap -mx-3 mb-6">

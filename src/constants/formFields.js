@@ -22,17 +22,40 @@ const loginFields=[
         placeholder:"Password"   
     }
 ]
+const resetPwdFields=[
+    {
+        labelText:"New Password",
+        labelFor:"new-Password",
+        id:"newPassword",
+        name:"password",
+        type:"password",
+        autoComplete:"password",
+        isRequired:true,
+        placeholder:"Password"   
+    },
+    {
+        labelText:"Confirm Password",
+        labelFor:"confirm-password",
+        id:"confirm-password",
+        name:"password",
+        type:"password",
+        autoComplete:"confirm-password",
+        isRequired:true,
+        placeholder:"Confirm Password"   
+    }
+]
+
 
 const signupFields=[
     {
-        labelText:"Username",
-        labelFor:"username",
-        id:"username",
-        name:"username",
+        labelText:"Full Name",
+        labelFor:"fullname",
+        id:"fullname",
+        name:"fullname",
         type:"text",
-        autoComplete:"username",
+        autoComplete:"name",
         isRequired:true,
-        placeholder:"Username"   
+        placeholder:"Full Name"   
     },
     {
         labelText:"Email address",
@@ -45,25 +68,55 @@ const signupFields=[
         placeholder:"Email address"   
     },
     {
-        labelText:"Password",
-        labelFor:"password",
-        id:"password",
-        name:"password",
-        type:"password",
-        autoComplete:"current-password",
+        labelText:"Phone Number",
+        labelFor:"phone_number",
+        id:"phone_number",
+        name:"phone_number",
+        type:"tel",
+        autoComplete:"phone_number",
         isRequired:true,
-        placeholder:"Password"   
+        placeholder:"Phone Number"   
     },
     {
-        labelText:"Confirm Password",
-        labelFor:"confirm-password",
-        id:"confirm-password",
-        name:"confirm-password",
-        type:"password",
-        autoComplete:"confirm-password",
+        labelText:"Country",
+        labelFor:"country",
+        id:"country",
+        name:"country",
+        type:"text",
+        autoComplete:"country",
         isRequired:true,
-        placeholder:"Confirm Password"   
+        placeholder:"Country"   
+    },
+    {
+        labelText:"Name of Company that scammed you",
+        labelFor:"company_name",
+        id:"company_name",
+        name:"company_name",
+        type:"text",
+        autoComplete:"company_name",
+        isRequired:true,
+        placeholder:"Company Name"   
+    },
+    {
+        labelText:"Description",
+        labelFor:"description",
+        id:"description",
+        name:"description",
+        type:"text",
+        autoComplete:"description",
+        isRequired:true,
+        placeholder:"Description"   
+    },
+    {
+        labelText:"Amount Lost",
+        labelFor:"amount_lost",
+        id:"amount_lost",
+        name:"amount_lost",
+        type:"text",
+        autoComplete:"amount_lost",
+        isRequired:true,
+        placeholder:"Amount Lost"   
     }
 ]
 
-export {loginFields,signupFields}
+export {loginFields,signupFields , resetPwdFields}

@@ -31,21 +31,21 @@ const Home = (props) => {
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                         </span>
-                        <span class="tracking-wide">About</span>
+                        <span class="tracking-wide">File Information</span>
                     </div>
                     <div class="text-gray-700">
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">First Name</div>
+                                <div class="px-4 py-2 font-semibold">Account Number</div>
+                                <div class="px-4 py-2">{props.data.account_number}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Full Name</div>
                                 <div class="px-4 py-2">{props.data.fullname}</div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Last Name</div>
-                                <div class="px-4 py-2">{props.data.email}</div>
-                            </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">country</div>
-                                <div class="px-4 py-2">{props.data.country}</div>
+                                <div class="px-4 py-2 font-semibold">Contact Info</div>
+                                <div class="px-4 py-2">{props.data.contact_information}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">company_name</div>
@@ -69,11 +69,7 @@ const Home = (props) => {
                  (<> <div className="homeContainer">
                 <Navbar/>
 
-                <div className='widgets'>
-                    <Widget type='CurrentBalanace'/>
-                    <Widget type='FundsonHold'/>
-                    <Widget type='Withdraw'/>
-                </div>
+                
                 <div className='listContainer'>
                     <div className='listTitle'>Latest Clients</div>
                     <Invoicetable></Invoicetable>

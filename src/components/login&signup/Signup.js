@@ -4,7 +4,7 @@ import FormAction from "./FormAction";
 import Input from "./Input";
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import authService from '../../services/auth.service';
+import axios from 'axios';
 const fields=signupFields;
 let fieldsState={};
 
@@ -23,15 +23,13 @@ function Signup(){
 
   //handle Signup API Integration here
   const  createAccount = async ()=>{
-   authService.signup(signupState.email, signupState.password)
-  .then((userCredential) => {
-    // Signed in 
-    console.log( userCredential.user);
-    navigate("/");
-  })
-  .catch((error) => {
-    console.log(error)
-   
+    console.log(signupState)
+  axios.post('/backend/api/new-user', signupState)
+  .then((response) => {
+    console.log(response)
+    navigate('/login')
+  }, (error) => {
+    console.log(error);
   });
   }
 
@@ -57,7 +55,7 @@ function Signup(){
                 
                 )
             }
-          <FormAction handleSubmit={handleSubmit} text="Signup" />
+          <FormAction handleSubmit={handleSubmit} text="Click Here to get your money back ! " />
         </div>
 
          

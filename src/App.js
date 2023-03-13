@@ -11,8 +11,9 @@ import PrivateRoute from './services/PrivateRoute';
 import ClientsPage from './pages/ClientsPage';
 import EditUser from './pages/editUser/editUser';
 import Single from './pages/single/single';
-
+import ResetPasswordPage from './pages/resetPassword/resetPasswordPage';
 import NewUser from './pages/newUser/newUser';
+import ClientParams from './pages/clientParams/clientParams';
 export default function App() {
   return (
    
@@ -22,6 +23,10 @@ export default function App() {
         <Routes>
         <Route element={<PrivateRoute/>}>
             <Route path="/app" element={<HomePage />} />
+            <Route
+                path="app/settings/:userId"
+                element={<ClientParams/>}
+              />
             <Route path="/app/clients">
               
               <Route index element={<ClientsPage />} />
@@ -29,6 +34,7 @@ export default function App() {
                 path="edit/:userId"
                 element={<EditUser />}
               />
+                
               <Route
                 path="new"
                 element={<NewUser  />}/>
@@ -37,7 +43,9 @@ export default function App() {
           <Route index path="/"   />
               <Route  path="/login" element={<LoginPage/>} />
             <Route path="/signup" element={<SignupPage/>} />
+            <Route exact path="/reset-password/:id/:token" element={<ResetPasswordPage/>} />
         </Routes>
+        
       </BrowserRouter>
  
   );

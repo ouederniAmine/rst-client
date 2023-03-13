@@ -1,15 +1,15 @@
 import {  useState } from 'react';
-import { loginFields } from "../../constants/formFields";
+import { resetPwdFields } from "../../constants/formFields";
 import FormAction from "./FormAction";
 import Input from "./Input";
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/auth.service';
 
-const fields=loginFields;
+const fields=resetPwdFields;
 let fieldsState = {};
 fields.forEach(field=>fieldsState[field.id]='');
 
-export default function Login(){
+export default function ResetPassword(){
     const [loginState,setLoginState]=useState(fieldsState);
     const navigate = useNavigate();
 
@@ -25,19 +25,15 @@ export default function Login(){
 
     //Handle Login API Integration here
     const authenticateUser = () =>{
-        console.log(loginState, loginState.password);
-        authService.login(loginState.email, loginState.password)
+      let email = window.location.pathname.split("/")[2];
+        console.log(loginState.newPassword);
+        authService.resetPassword(email ,  window.location.pathname.split("/")[3] ,loginState.newPassword)
   .then((e) => {
-    console.log("login success", e);
+    console.log("change success", e);
     navigate("/app");
-
-  })
-  .catch((error) => {
-    alert("Wrong email or password");
-  });
     }
 
-   
+  )}   
     return(<div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <div className="-space-y-px">
@@ -59,19 +55,11 @@ export default function Login(){
                 )
             }
         </div>
-        <FormAction handleSubmit={handleSubmit} text="Login" />
+        <FormAction handleSubmit={handleSubmit} text="Reset" />
 
        
 
       </form>
-       <button
-                
-       className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600  hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 mt-10"
-       onClick={()=>window.location.replace('https://recoveryst.net/')
-       }  
-   >
-
-       Back to Home
-   </button></div>
+       </div>
     )   
 }
