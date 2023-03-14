@@ -80,8 +80,36 @@ const Single = () => {
                                 <div class="px-4 py-2">{data.account_number}</div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Permanant Address</div>
-                                <div class="px-4 py-2">{data.bank_address}</div>
+                                <div class="px-4 py-2 font-semibold"> Country</div>
+                                <div class="px-4 py-2">{data.country}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Bank Name </div>
+                                <div class="px-4 py-2">{data.bank_name}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Swift</div>
+                                <div class="px-4 py-2">{data.swift}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> IBAN</div>
+                                <div class="px-4 py-2">{data.country}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Beneficiary Name</div>
+                                <div class="px-4 py-2">{data.beneficiary_name}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Beneficiary Address</div>
+                                <div class="px-4 py-2">{data.beneficiary_address}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Bank Address</div>
+                                <div class="px-4 py-2">{data.beneficiary_name}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Bitcoin Wallet</div>
+                                <div class="px-4 py-2">{data.btc_wallet}</div>
                             </div>
                             
                         </div>

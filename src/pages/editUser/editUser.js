@@ -18,8 +18,9 @@ const EditUser = ({ inputs, title }) => {
     let clientId = window.location.pathname.split("/")[4];
     axios
       .put("/backend/api/client/" +clientId, data)
-      .then((res) => {
+      .then((res , err) => {
         console.log(res);
+        console.log(err);
         navigate("/app/clients/");
       })
       .catch((err) => {
@@ -30,7 +31,7 @@ const EditUser = ({ inputs, title }) => {
   const resetPassword = () => {
     const email = data.email;
     axios
-    .post("/backend/api/forget-password", {email})
+    .post("/backend/auth/forget-password", {email})
     .then((res) => {
       console.log(res);
       navigate("/app/clients/");
