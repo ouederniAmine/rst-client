@@ -20,7 +20,9 @@ const ClientsTable = (props) => {
           email:"",
           current_balance:"",
           funds_on_hold: "",
-          withdrawable_balance: ""
+          withdrawable_balance: "",
+          last_login_info: ""
+
         }
           //foreach element in res.data get the id and name and email and currentBalance and put it in newData array
         res.data.map(element => {
@@ -30,6 +32,7 @@ const ClientsTable = (props) => {
           newData.current_balance = element.current_balance;
           newData.funds_on_hold = element.funds_on_hold;
           newData.withdrawable_balance = element.withdrawable_balance;
+          newData.last_login_info = element.last_login_info;
           //push newData to data array
           data.push(newData);
           //reset newData
@@ -74,6 +77,12 @@ const ClientsTable = (props) => {
     {
       field: "withdrawable_balance",
       headerName: "Withdrawable Balance",
+      width: 200,
+    }
+    ,
+    {
+      field: "last_login_info",
+      headerName: "Last Login Info",
       width: 200,
     }
    
@@ -123,10 +132,14 @@ const ClientsTable = (props) => {
     <div className="datatable">
  <div className="datatableTitle">
          Clients
+         <div>
          <Link to={ "new"} className="link">
-          Add New
+          Add New User
         </Link>
-        
+
+        <Link to={ "csv"} className="link">
+          Import CSV
+        </Link></div>
       </div>
        
        

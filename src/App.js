@@ -13,6 +13,7 @@ import EditUser from './pages/editUser/editUser';
 import Single from './pages/single/single';
 import ResetPasswordPage from './pages/resetPassword/resetPasswordPage';
 import NewUser from './pages/newUser/newUser';
+import ImportCsv from './pages/importCsv/importCsv';
 import ClientParams from './pages/clientParams/clientParams';
 export default function App() {
   return (
@@ -38,6 +39,9 @@ export default function App() {
               <Route
                 path="new"
                 element={<NewUser  />}/>
+                <Route
+                path="csv"
+                element={<ImportCsv  />}/>
               <Route path=":userId" element={<Single />} /></Route> 
           </Route>  
           <Route index path="/"   />

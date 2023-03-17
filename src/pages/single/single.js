@@ -16,6 +16,7 @@ const Single = () => {
     axios.delete("/backend/api/client/"+clientId)
     .then((res) => {
       console.log(res.data)
+      navigate("/app/clients/");
     })
     .catch((err) => {
       console.log(err);
@@ -110,6 +111,22 @@ const Single = () => {
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold"> Bitcoin Wallet</div>
                                 <div class="px-4 py-2">{data.btc_wallet}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Current Balance</div>
+                                <div class="px-4 py-2">{data.current_balance}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Funds On Hold</div>
+                                <div class="px-4 py-2">{data.fund_on_hold}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Withdrawable Balance</div>
+                                <div class="px-4 py-2">{data.withdrawable_balance}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold"> Last Login Info</div>
+                                <div class="px-4 py-2">{data.last_login_info}</div>
                             </div>
                             
                         </div>

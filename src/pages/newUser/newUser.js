@@ -5,15 +5,18 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import BankLogo from "../../assets/bank.svg";
+import CurrencyInput from 'react-currency-input-field';
+
 const NewUser = ({ inputs, title }) => {
   // get data from variable api endpoint
   const [btc, setBtc] = useState(false);
   const navigate = useNavigate();
   const [data, setData] = useState({
-    fullname :"",  'email':"", 'pwd':"password", 'current_balance':0, 'funds_on_hold':0, 'withdrawable_balance':0, 'date_of_birth':"", 'country':"", 'company_name':"", 'account_number':0, 'btc_wallet':"", 'bank_name':"", 'swift':0, 'iban':0, beneficiary_name:"", beneficiary_address:"", contact_information:"", bank_address:""
+    fullname :"",  pwd:"", 'email':"", 'currency' :"$",'current_balance':0, 'funds_on_hold':0, 'withdrawable_balance':0, 'date_of_birth':"", 'country':"", 'company_name':"", 'account_number':0, 'btc_wallet':"", 'bank_name':"", 'swift':0, 'iban':0, beneficiary_name:"", beneficiary_address:"", contact_information:"", bank_address:""
   });
   
-
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const sendData = () => {
 
     axios
@@ -27,7 +30,29 @@ const NewUser = ({ inputs, title }) => {
       });
   };
 
+  const updatePassword = () => {
+    let clientId = window.location.pathname.split("/")[4];
+    axios
+      .put("/backend/auth//update-password/" +clientId, {password})
+      .then((res , err) => {
+        console.log(res);
+        console.log(err);
+        navigate("/app/clients/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  const resetPassword = () => {
+    const email = data.email;
+    axios
+    .post("/backend/auth/forget-password", {email})
+    .then((res) => {
+      console.log(res);
+      navigate("/app/clients/");
+    }
+    )}
 
 
   return (
@@ -63,7 +88,59 @@ Email      </label>
       }}/>
     </div>
   </div>
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
+       Set Client Password
+      </label>
+      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="************"  onChange={ (e)=>{e.preventDefault();  setData({
+        ...data, 
+        pwd: e.target.value
+      });
+      
+      }}  />
+    </div>
+    
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
+        Reset Client Password
+      </label>
+      <button type="button" onClick={(e)=>{
+        e.preventDefault();
+        resetPassword()
 
+      }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Send Reset Password to Client</button>
+
+    </div>
+    
+  </div>
+  
+  <div className="flex flex-wrap -mx-3 mb-6">
+    
+    <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+       Contact Information
+      </label>
+      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="+44 XXXXXXXXX" value={data.contact_information} onChange={ (e)=>{e.preventDefault();  setData({
+        ...data, 
+        contact_information: e.target.value
+      });
+      
+      }}/>
+    </div>
+
+    <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
+       Account Number
+      </label>
+      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="1123"  value={data.account_number} onChange={ (e)=>{e.preventDefault();  setData({
+        ...data, 
+        account_number: e.target.value
+      });
+      
+      }}/>
+    </div>
+  </div> 
   <div className="flex flex-wrap -mx-3 mb-6">
     <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
@@ -88,65 +165,84 @@ Country of residence      </label>
     </div>
   </div>
   <div className="flex flex-wrap -mx-3 mb-6">
+    
+    
     <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
-      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
-       Contact Information
-      </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="+44 XXXXXXXXX" value={data.contact_information} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        contact_information: e.target.value
-      });
-      
-      }}/>
-    </div>
-    <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
-      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
-       Account Number
-      </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="1123"  value={data.account_number} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        account_number: e.target.value
-      });
-      
-      }}/>
-    </div>
-  </div> <div className="flex flex-wrap -mx-3 mb-6">
-    <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
+    
+    <label for="countries" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Select a currency</label>
+    <select id="countries" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value={data.currency} onChange={ (e)=>{e.preventDefault();  setData({
+            ...data, 
+            currency: e.target.value
+          });
+          
+          }}>
+      <option selected>Choose a currency</option>
+      <option value="$">USD</option>
+      <option value="£">GBP</option>
+      <option value="€">EURO</option>
+    </select>
+    
+        </div>
+        <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
        Current Balance
       </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="1200"  value={data.current_balance} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        current_balance: e.target.value
-      });
-      
-      }}/>
+      <CurrencyInput
+  id="input-example"
+  name="input-name"
+  value={data.current_balance}
+  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+  placeholder="1.000,000"
+  defaultValue={1000}
+  suffix={data.currency}
+  decimalSeparator="," groupSeparator="." 
+  decimalsLimit={3}
+  onValueChange={(value, name) => console.log(value, name)}
+/>
     </div>
+  </div> <div className="flex flex-wrap -mx-3 mb-6">
+  
     <div className=" md:w-1/2 px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
 Funds on Hold      </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="1330"  value={data.funds_on_hold} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        funds_on_hold: e.target.value
-      });
-      
-      }} />
+<CurrencyInput
+  id="input-example"
+  name="input-name"
+  value={data.funds_on_hold}
+  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+  placeholder="1.000,000"
+  defaultValue={1000}
+  suffix={data.currency}
+  decimalSeparator="," groupSeparator="." 
+  decimalsLimit={3}
+  onValueChange={(value, name) => console.log(value, name)}
+/>
     </div>
-  </div>
-  <div className="flex flex-wrap -mx-3 mb-6">
-    <div className="w-full px-3">
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
         withdrawable funds
       </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="1222"  value={data.withdrawable_balance} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        withdrawable_balance: e.target.value
-      });
-      
-      }}/>
+      <CurrencyInput
+  id="input-example"
+  name="input-name"
+  suffix={data.currency}
+
+  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+  placeholder="1.000,000"
+  value={data.withdrawable_funds}
+  defaultValue={1000}
+  decimalSeparator="," groupSeparator="." 
+  decimalsLimit={3}
+  onValueChange={(value, name) => console.log(value, name)}
+/>
     </div>
+  </div>
+  <div className="flex flex-wrap -mx-3 mb-6">
+ 
+   
+<br></br>
+    <button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit User</button>
   </div> 
-  <button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">New User</button>
 
 </form>
 
@@ -270,6 +366,7 @@ Funds on Hold      </label>
   
     </div>
   </div>
+  
   );
 };
 

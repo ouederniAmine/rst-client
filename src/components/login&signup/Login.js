@@ -4,7 +4,6 @@ import FormAction from "./FormAction";
 import Input from "./Input";
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/auth.service';
-
 const fields=loginFields;
 let fieldsState = {};
 fields.forEach(field=>fieldsState[field.id]='');
@@ -12,8 +11,7 @@ fields.forEach(field=>fieldsState[field.id]='');
 export default function Login(){
     const [loginState,setLoginState]=useState(fieldsState);
     const navigate = useNavigate();
-
-    
+   
     const handleChange=(e)=>{
         setLoginState({...loginState,[e.target.id]:e.target.value})
     }
@@ -22,6 +20,7 @@ export default function Login(){
         e.preventDefault();
         authenticateUser();
     }
+    
 
     //Handle Login API Integration here
     const authenticateUser = () =>{

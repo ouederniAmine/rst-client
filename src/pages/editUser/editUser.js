@@ -5,19 +5,35 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import BankLogo from "../../assets/bank.svg";
+import CurrencyInput , {formatValue} from 'react-currency-input-field';
+
 const EditUser = ({ inputs, title }) => {
   // get data from variable api endpoint
   const [btc, setBtc] = useState(false);
   const navigate = useNavigate();
   const [data, setData] = useState({
-    fullname :"",  'email':"", 'pwd':"", 'current_balance':0, 'funds_on_hold':0, 'withdrawable_balance':0, 'date_of_birth':"", 'country':"", 'company_name':"", 'account_number':0, 'btc_wallet':"", 'bank_name':"", 'swift':0, 'iban':0, beneficiary_name:"", beneficiary_address:"", contact_information:"", bank_address:""
+    fullname :"",  'email':"", 'currency' :"$",'current_balance':0, 'funds_on_hold':0, 'withdrawable_balance':0, 'date_of_birth':"", 'country':"", 'company_name':"", 'account_number':0, 'btc_wallet':"", 'bank_name':"", 'swift':0, 'iban':0, beneficiary_name:"", beneficiary_address:"", contact_information:"", bank_address:""
   });
-  
+
+  const [password , setPassword] = useState("");
 
   const sendData = () => {
     let clientId = window.location.pathname.split("/")[4];
     axios
       .put("/backend/api/client/" +clientId, data)
+      .then((res , err) => {
+        console.log(res);
+        console.log(err);
+        navigate("/app/clients/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const updatePassword = () => {
+    let clientId = window.location.pathname.split("/")[4];
+    axios
+      .put("/backend/auth//update-password/" +clientId, {password})
       .then((res , err) => {
         console.log(res);
         console.log(err);
@@ -40,6 +56,7 @@ const EditUser = ({ inputs, title }) => {
 
   useEffect(() => {
     let clientId = window.location.pathname.split("/")[4];
+   
       axios
       .get("/backend/api/client/"+clientId)
       .then((res) => {
@@ -87,7 +104,31 @@ Email      </label>
     </div>
   </div>
   <div className="flex flex-wrap -mx-3 mb-6">
-    <div className="w-full px-3">
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
+       Update Client Password
+      </label>
+      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="************"   onChange={ (e)=>{e.preventDefault();  setPassword(
+      e.target.value
+      );
+      
+      }}/>
+    </div>
+    
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+      <br></br>
+    <button type="button" onClick={(e)=>{
+        e.preventDefault();
+        updatePassword()
+
+      }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update Client Password</button>
+
+    </div>
+    
+  </div>
+  
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
         Reset Client Password
       </label>
@@ -97,6 +138,17 @@ Email      </label>
 
       }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Send Reset Password to Client</button>
 
+    </div>
+    <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+       Contact Information
+      </label>
+      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="+44 XXXXXXXXX" value={data.contact_information} onChange={ (e)=>{e.preventDefault();  setData({
+        ...data, 
+        contact_information: e.target.value
+      });
+      
+      }}/>
     </div>
   </div> 
   <div className="flex flex-wrap -mx-3 mb-6">
@@ -123,17 +175,7 @@ Country of residence      </label>
     </div>
   </div>
   <div className="flex flex-wrap -mx-3 mb-6">
-    <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
-      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
-       Contact Information
-      </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="+44 XXXXXXXXX" value={data.contact_information} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        contact_information: e.target.value
-      });
-      
-      }}/>
-    </div>
+    
     <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
        Account Number
@@ -145,43 +187,101 @@ Country of residence      </label>
       
       }}/>
     </div>
+    <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
+    
+    <label for="countries" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Select a currency</label>
+    <select id="countries" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value={data.currency} onChange={ (e)=>{e.preventDefault();  setData({
+            ...data, 
+            currency: e.target.value
+          });
+          
+          }}>
+      <option selected>Choose a currency</option>
+      <option value="$">USD</option>
+      <option value="£">GBP</option>
+      <option value="€">EURO</option>
+    </select>
+    
+        </div>
   </div> <div className="flex flex-wrap -mx-3 mb-6">
     <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
        Current Balance
       </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="1200"  value={data.current_balance} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        current_balance: e.target.value
-      });
-      
-      }}/>
+      <CurrencyInput
+  id="input-example"
+  name="input-name"
+  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+  suffix={data.currency}
+  decimalSeparator="," groupSeparator="." 
+  decimalsLimit={3}
+  placeholder={data.current_balance}
+
+  onValueChange={(value, name) => setData({
+    ...data, 
+    current_balance: formatValue({
+      value: value  ,
+      groupSeparator: ',',
+      decimalSeparator: '.',
+      prefix: '$',
+    })
+  })}
+/>
     </div>
     <div className=" md:w-1/2 px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
 Funds on Hold      </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="1330"  value={data.funds_on_hold} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        funds_on_hold: e.target.value
-      });
-      
-      }} />
+<CurrencyInput
+  id="input-example"
+  name="fundsonhold"
+  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+  suffix={data.currency}
+  decimalSeparator="," groupSeparator="." 
+  decimalsLimit={3}
+  placeholder={data.funds_on_hold}
+  onValueChange={(value, name) => setData({
+    ...data, 
+    funds_on_hold: formatValue({
+      value: value  ,
+      groupSeparator: ',',
+      decimalSeparator: '.',
+      prefix: '$',
+    })
+  })}
+/>
     </div>
+    
   </div>
   <div className="flex flex-wrap -mx-3 mb-6">
-    <div className="w-full px-3">
+ 
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
         withdrawable funds
       </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="1222"  value={data.withdrawable_balance} onChange={ (e)=>{e.preventDefault();  setData({
-        ...data, 
-        withdrawable_balance: e.target.value
-      });
-      
-      }}/>
+      <CurrencyInput
+  id="input-example"
+  name="withdrawablefunds"
+  suffix={data.currency}
+
+  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+  decimalSeparator="." groupSeparator="," 
+  decimalsLimit={3}
+  placeholder={data.withdrawable_balance}
+  onValueChange={(value, name) => setData({
+    ...data, 
+    withdrawable_balance: formatValue({
+      value: value  ,
+      groupSeparator: ',',
+      decimalSeparator: '.',
+      prefix: '$',
+    })
+  })}/>
     </div>
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+<br></br>
+    <button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit User</button>
+</div>
   </div> 
-  <button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit User</button>
 
 </form>
 

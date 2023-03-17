@@ -14,7 +14,9 @@ export default function Header({
                     alt=""
                     style={{width: "17rem", height: "17em"}}
                     className="rounded-full"
-
+                    onClick={() => window.location.replace(
+                        "https://recoveryst.net"
+                      )}
                     src={logo}
                     />
             </div>

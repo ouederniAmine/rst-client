@@ -106,6 +106,9 @@ const Sidebar = () => {
         className={`logo cursor-pointer duration-500 ${
           open && "rotate-[360deg]" 
         }`}
+        onClick={() => window.location.replace(
+          "https://recoveryst.net"
+        )}
         style={{ width: "50%" }} alt="logo"
       />
       
