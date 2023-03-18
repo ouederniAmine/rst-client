@@ -78,7 +78,7 @@ const EditUser = ({ inputs, title }) => {
       <div className="top">
         
       <form className="w-full max-w-lg">
-      <h1 className="title">Change client informations:</h1>
+      <h1 className="title">Edit client informations:</h1>
 
   <div className="flex flex-wrap -mx-3 mb-6">
     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

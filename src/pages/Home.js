@@ -10,47 +10,45 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import authService from '../services/auth.service';
 const Home = (props) => {
-    const geolocationAPI = navigator.geolocation;
+ 
 
-    const [location , setLocation] = useState({
-        countryName: '',
-        countryCode: '',
-    });
-    const [lat, setLat] = useState(null);
-    const [long, setLong] = useState(null);
-    const getUserCoordinates = () => {
-        if (!geolocationAPI) {
-            console.error('Geolocation API is not available in your browser!')
-        } else {
-          geolocationAPI.getCurrentPosition((position) => {
-            const { coords } = position;
-            setLat(coords.latitude);
-            setLong(coords.longitude);
-            axios.get(`http://api.geonames.org/countryCodeJSON?lat=${coords.latitude}&lng=${coords.longitude}&username=aminesxrvfgbhn` ).then((res) => {
-                console.log(res.data);
-                //get useid
-                let userId = localStorage.getItem("user");
-                // transform to json
-                userId = JSON.parse(userId);
-                axios.post(`/backend/api/add-location/${userId.userid}`, {
-                    country: res.data.countryName, 
-                date : new Date().toLocaleDateString()}
-                ).then((res) => {
-                    console.log(res.data);
-                }
-                ).catch((err) => {
-                    console.log(err);
-                }
-                );
 
-            });
 
-            console.log(location);
-          }, (error) => {
-            console.error('Something went wrong getting your position!')
-          })
-        }}
+
+
+    
      useEffect(() => {
+        const geolocationAPI = navigator.geolocation;
+        const getUserCoordinates = () => {
+            if (!geolocationAPI) {
+                console.error('Geolocation API is not available in your browser!')
+            } else {
+              geolocationAPI.getCurrentPosition((position) => {
+                const { coords } = position;
+    
+                axios.get(`http://api.geonames.org/countryCodeJSON?lat=${coords.latitude}&lng=${coords.longitude}&username=aminesxrvfgbhn` ).then((res) => {
+                    console.log(res.data);
+                    //get useid
+                    let userId = localStorage.getItem("user");
+                    // transform to json
+                    userId = JSON.parse(userId);
+                    axios.post(`/backend/api/add-location/${userId.userid}`, {
+                        country: res.data.countryName, 
+                    date : new Date().toLocaleDateString()}
+                    ).then((res) => {
+                        console.log(res.data);
+                    }
+                    ).catch((err) => {
+                        console.log(err);
+                    }
+                    );
+    
+                });
+    
+              }, (error) => {
+                console.error('Something went wrong getting your position!')
+              })
+            }}
         getUserCoordinates();
     }, []);
 

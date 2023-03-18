@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/sidebar";
 import Navbar from "../../components/navbar/navbar";
 import axios from "axios";
 
-import { useState, useEffect ,CSSProperties , } from "react";
+import { useState} from "react";
 import {
   useCSVReader,
   lightenDarkenColor,
@@ -114,7 +114,7 @@ const ImportCsv = ({ inputs, title }) => {
       <div className="top">
       <div className="left">
           <div className='listContainer'>
-          <h1 className="title " style={{"color":"black"}}>Change client informations:</h1>
+          <h1 className="title " style={{"color":"black"}}>Add Multiple Clients using CSV:</h1>
       <CSVReader
       config={{
         header: true,

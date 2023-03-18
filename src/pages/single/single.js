@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/sidebar";
 import Navbar from "../../components/navbar/navbar";
 import { useState ,  useEffect} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 const Single = () => {
   const [data, setData] = useState({
     id:0,
@@ -11,6 +12,8 @@ const Single = () => {
     date:"",
     pdflink:""
   });
+  const navigate = useNavigate();
+  
   const deleteUser =()=>{
     let clientId = window.location.pathname.split("/")[3];
     axios.delete("/backend/api/client/"+clientId)

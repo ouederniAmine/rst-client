@@ -14,9 +14,7 @@ const NewUser = ({ inputs, title }) => {
   const [data, setData] = useState({
     fullname :"",  pwd:"", 'email':"", 'currency' :"$",'current_balance':0, 'funds_on_hold':0, 'withdrawable_balance':0, 'date_of_birth':"", 'country':"", 'company_name':"", 'account_number':0, 'btc_wallet':"", 'bank_name':"", 'swift':0, 'iban':0, beneficiary_name:"", beneficiary_address:"", contact_information:"", bank_address:""
   });
-  
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
   const sendData = () => {
 
     axios
@@ -30,19 +28,7 @@ const NewUser = ({ inputs, title }) => {
       });
   };
 
-  const updatePassword = () => {
-    let clientId = window.location.pathname.split("/")[4];
-    axios
-      .put("/backend/auth//update-password/" +clientId, {password})
-      .then((res , err) => {
-        console.log(res);
-        console.log(err);
-        navigate("/app/clients/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+ 
 
   const resetPassword = () => {
     const email = data.email;
@@ -63,7 +49,7 @@ const NewUser = ({ inputs, title }) => {
       <div className="top">
         
       <form className="w-full max-w-lg">
-      <h1 className="title">Change client informations:</h1>
+      <h1 className="title">New Client:</h1>
 
   <div className="flex flex-wrap -mx-3 mb-6">
     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -241,7 +227,7 @@ Funds on Hold      </label>
  
    
 <br></br>
-    <button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit User</button>
+    <button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">New User</button>
   </div> 
 
 </form>
@@ -257,7 +243,7 @@ Funds on Hold      </label>
 <div>{
   btc ?(     
     <form className="w-full max-w-lg">
-    <h1 className="title">Change client informations:</h1>
+    <h1 className="title">Add New Client:</h1>
 
 
 <div className="flex flex-wrap -mx-3 mb-6">
@@ -278,7 +264,7 @@ Funds on Hold      </label>
 
 </form>): (     
       <form className="w-full max-w-lg">
-      <h1 className="title">Change client informations:</h1>
+      <h1 className="title">Add New Client:</h1>
 
  
   <div className="flex flex-wrap -mx-3 mb-6">

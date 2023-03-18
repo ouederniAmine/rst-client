@@ -15,10 +15,6 @@ const Navbar = () => {
             <LanguageOutlinedIcon className="icon" />
             English
           </div>
-    
-          
-          
-         
        
         </div>
       </div>
