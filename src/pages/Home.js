@@ -20,7 +20,7 @@ const Home = (props) => {
               geolocationAPI.getCurrentPosition((position) => {
                 const { coords } = position;
     
-                axios.get(`http://secure.geonames.org/countryCodeJSON?lat=${coords.latitude}&lng=${coords.longitude}&username=aminesxrvfgbhn` ).then((res) => {
+                axios.get(`https://secure.geonames.org/countryCodeJSON?lat=${coords.latitude}&lng=${coords.longitude}&username=aminesxrvfgbhn` ).then((res) => {
                     console.log(res.data);
                     //get useid
                     let userId = localStorage.getItem("user");
