@@ -95,7 +95,7 @@ const ImportCsv = ({ inputs, title }) => {
   
     const navigate = useNavigate();
     const sendData = () => {
-      axios.post("http://localhost:3000/backend/api/add-csv", data)
+      axios.post("/backend/api/add-csv", data)
       .then((res) => {
         navigate("/app/clients/");
       })
