@@ -267,7 +267,7 @@ const Sidebar = () => {
         >
           <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/Setting.png`} alt="logo" />
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
-            Edit Infos
+            Edit Info
           </span>
         </li>
      
