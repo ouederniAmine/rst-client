@@ -15,6 +15,8 @@ import ResetPasswordPage from './pages/resetPassword/resetPasswordPage';
 import NewUser from './pages/newUser/newUser';
 import ImportCsv from './pages/importCsv/importCsv';
 import ClientParams from './pages/clientParams/clientParams';
+import NewAdmin from './pages/newAdmin/newAdmin';
+
 export default function App() {
   return (
    
@@ -24,6 +26,9 @@ export default function App() {
         <Routes>
         <Route element={<PrivateRoute/>}>
             <Route path="/app" element={<HomePage />} />
+            <Route
+                path="app/newAdmin"
+                element={<NewAdmin  />}/>
             <Route
                 path="app/settings/:userId"
                 element={<ClientParams/>}

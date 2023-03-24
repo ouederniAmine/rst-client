@@ -138,7 +138,20 @@ const Sidebar = () => {
         </span>
       </li> 
       
-
+      <li 
+          key={3}
+          className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+         my-8"
+            "bg-light-white"
+           `}
+           style={{alignSelf:"baseline"}}
+           onClick={() => navigate("/app/newAdmin/")} 
+        >
+          <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/Setting.png`} alt="logo" />
+          <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
+            Add Admin
+          </span>
+        </li>
    
       <li 
         key={4}
