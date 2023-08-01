@@ -1,0 +1,118 @@
+{
+
+"sidebar.dashboard": "لوحة التحكم",
+"sidebar.clients": "العملاء",
+"sidebar.addAdmin": "إضافة المشرف",
+"sidebar.signOut": "خروج",
+
+"Edit Info" : "تعديل المعلومات",
+"Request a Callback" : "طلب مكالمة",
+"Request a withdrawal" : "طلب سحب",
+"Your withdrawal request is now under review. You will contacted for a vocal confirmation shortly.": "تمت مراجعة طلب السحب الخاص بك الآن. سيتم الاتصال بك للتأكيد الصوتي قريبًا."
+,"Close modal": "إغلاق النافذة"
+
+,"Request Successfully Submitted"   : "تم إرسال الطلب بنجاح",
+"I accept"  : "أوافق"
+,"Your request has been successfully submitted. A representative will call you as soon as possible."    : "تم إرسال طلبك بنجاح. سيتصل بك ممثل في أقرب وقت ممكن."
+,"Client Name": "اسم العميل",
+"Client Email": "بريد العميل"
+,"Current Balance" : "الرصيد الحالي"
+,"Funds On Hold" : "الأموال معلقة"
+,"Funds on Holds"   : "الأموال معلقة"
+,"Withdrawable Balance" : "الرصيد القابل للسحب"
+
+,"Last Login Info"  : "معلومات تسجيل الدخول الأخيرة"
+,
+"View"  : "عرض",
+
+"Edit"  : "تعديل",
+
+
+"Delete"    : "حذف",
+
+"Clients"   : "العملاء"
+,
+"Add New User"  : "إضافة مستخدم جديد",
+"Import CSV"    : "استيراد CSV",
+"Action"    : "عمل",
+"Add New Admin:"    : "إضافة مشرف جديد:",
+"Email" : "البريد الإلكتروني",
+"Admin  Password"  : "كلمة مرور المشرف",
+"Add Admin" : "إضافة مشرف",
+"File Information"  : "معلومات الملف",
+"Account Number"    : "رقم الحساب",
+"Full Name" : "الاسم الكامل",
+"Contact Info"  : "معلومات الاتصال",
+"Company Name"      : "اسم الشركة",
+"Permanant Address" : "العنوان الدائم",
+"Latest Clients"    : "أحدث العملاء"
+,"Country"  : "بلد"
+
+,"Bank Name"    : "اسم البنك",
+"Swift" : "Swift",
+"IBAN"  : "IBAN",
+"Beneficiary Name"  : "اسم المستفيد"
+,"Beneficiary Address"  : "عنوان المستفيد"
+,"Bank Address" : "عنوان البنك"
+
+,"Bitcoin Wallet"   : "محفظة بيتكوين"
+
+,"Delete User"  : "حذف المستخدم",
+"Edit client informations:" : "تعديل معلومات العميل:",
+   "Update Client Password"    : "تحديث كلمة مرور العميل"
+,"Reset Client Password"    : "إعادة تعيين كلمة مرور العميل"
+
+,"Contact Information"  : "معلومات الاتصال"
+,"Company's Name"   : "اسم الشركة"
+,"Country of residence" : "بلد الإقامة"
+
+,"Select a currency"  : "اختر عملة"
+,"Choose a currency"    : "اختر عملة"
+,"Edit User"    : "تعديل المستخدم"
+,"Enter Bitcoin Wallet Address" : "أدخل عنوان محفظة بيتكوين"
+
+,"Enter Bank Account informations"  : "أدخل معلومات الحساب المصرفي"
+,"Change client informations:"  : "تغيير معلومات العميل:","Send Reset Password to Client"   : "إرسال إعادة تعيين كلمة المرور إلى العميل"
+,"Add Multiple Clients using CSV:"  : "إضافة عملاء متعددين باستخدام CSV:"
+
+
+,"Drop CSV file here to upload" : "إسقاط ملف CSV هنا للتحميل",
+"Send Data" : "إرسال البيانات",
+"New Client:"  : "عميل جديد:"
+,"Set Client Password"  : "تعيين كلمة مرور العميل","New User:" : "مستخدم جديد:","Add New Client:" : "إضافة عميل جديد:"
+
+,"New Users"   :   "مستخدم جديد"
+,"Edit Info:": "تعديل المعلومات:","Update Infos"
+:"تحديث المعلومات","Change User informations:"  : "تغيير معلومات المستخدم:","Change User Password:" : "تغيير كلمة مرور المستخدم:"
+
+,"Send Reset Password link"   : "إرسال رابط إعادة تعيين كلمة المرور","Current Balanace"
+   :"الرصيد الحالي"
+
+,"Official Info" : "معلومات رسمية","Personal Information":  " المعلومات الشخصيّة" 
+
+,"Login Log"   :"سجل الدخول"
+,"User ID"  :  "معرّف المستخدم"
+,"View Client" : "عرض العميل"
+,"Financial Information"   : "المعلومات المالية"
+
+
+,"Banking Information"  : "معلومات البنك"
+
+
+
+,"Auto Trader:"   : "المستثمر التلقائي:"
+,"Remember me" : "تذكرني",
+"Forgot your password?": "هل نسيت كلمة المرور؟"
+,"Back to Home"   : "العودة إلى الصفحة الرئيسية"
+,"Login"  : "تسجيل الدخول"
+,"Login to your account"   : "تسجيل الدخول إلى حسابك","Don't have an account yet?"  : "ليس لديك حساب بعد؟","Sign Up" : "سجل","Signup to create an account"  
+   :"الاشتراك لإنشاء حساب","Already have an account?" : "هل لديك حساب؟","Sign In" : "تسجيل الدخول","Sign Up" : "سجل"
+,"Email address"  : "عنوان البريد الإلكتروني"
+
+
+,"Phone Number"   : "رقم الهاتف"
+,"Description"   : "وصف"
+,"Amount Lost"  : "المبلغ المفقود"
+
+,"Click Here to get your money back !" : "انقر هنا لاسترداد أموالك!"
+,"Password" : "كلمه السر"}

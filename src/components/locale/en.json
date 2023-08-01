@@ -1,0 +1,113 @@
+{
+    "title": "The 5th Wave",
+    "sidebar.dashboard": "Dashboard",
+    "sidebar.clients": "Clients",
+    "sidebar.addAdmin": "Add Admin",
+    "sidebar.signOut": "Sign Out",
+    "Edit Info": "Edit Info",
+"Request a Callback": "Request a Callback",
+"Request a withdrawal": "Request a withdrawal",
+"Your withdrawal request is now under review. You will contacted for a vocal confirmation shortly.": "Your withdrawal request is now under review. You will contacted for a vocal confirmation shortly."
+
+
+,"Close modal"   : "Close modal",
+"Request Successfully Submitted":   "Request Successfully Submitted",
+"I accept"  : "I accept"
+,"Your request has been successfully submitted. A representative will call you as soon as possible.": "Your request has been successfully submitted. A representative will call you as soon as possible."    ,
+"Client Name"  : "Client Name",
+"Client Email"  : "Client Email"
+,"Current Balance"  : "Current Balance"
+,"Funds On Hold"   : "Funds On Hold",
+"Funds on Holds"    : "Funds on Holds",
+"Withdrawable Balance" : "Withdrawable Balance"
+,"Last Login Info"  : "Last Login Info"
+,"View" : "View",
+"Edit" : "Edit",
+"Delete" : "Delete"
+,"Clients" : "Clients"
+
+,"Add New User" : "Add New User"
+,"Import CSV" : "Import CSV"
+
+,"Action"   : "Action"
+,"Add New Admin:"   : "Add New Admin:",
+"Email" : "Email",
+"Admin  Password"   : "Admin  Password",
+"Add Admin" : "Add Admin",
+"File Information"  : "File Information",
+"Account Number"   : "Account Number"
+,"Full Name"    : "Full Name",
+"Contact Info"  : "Contact Info",
+"Company Name"  : "Company Name",
+"Permanant Address" : "Permanant Address",
+"Latest Clients"    : "Latest Clients"
+,"Country"  : "Country",
+"Bank Name" : "Bank Name",
+"Swift" : "Swift",
+"IBAN"  : "IBAN",
+"Beneficiary Name"  : "Beneficiary Name",
+"Beneficiary Address"   : "Beneficiary Address",
+
+"Bank Address" : "Bank Address"
+
+,"Bitcoin Wallet"   : "Bitcoin Wallet"
+
+
+,"Delete User"  : "Delete User"
+
+,"Edit client informations:"    : "Edit client informations:",
+"Update Client Password"   : "Update Client Password",
+"Reset Client Password" : "Reset Client Password"
+,"Contact Information"  : "Contact Information",
+"Company's Name"   : "Company's Name",
+"Country of residence"  : "Country of residence","Select a currency"   : "Select a currency",
+
+
+"Choose a currency" : "Choose a currency"
+,"Edit User"    : "Edit User",
+"Enter Bitcoin Wallet Address"  : "Enter Bitcoin Wallet Address",
+"Enter Bank Account informations"   : "Enter Bank Account informations",
+
+"Change client informations:"   : "Change client informations:"
+
+,"Send Reset Password to Client"    : "Send Reset Password to Client"
+
+,"Add Multiple Clients using CSV:"  : "Add Multiple Clients using CSV:",
+"Drop CSV file here to upload"  : "Drop CSV file here to upload","Send Data"
+    : "Send Data",
+    "New Client:"   : "New Client:","Set Client Password"   : "Set Client Password","Add New Client:"  :    "Add New Client:"
+   , "New Users" : "New Users"
+,"Edit Info:"   :   "Edit Info:","Update Infos" : "Update Infos","Change User informations:"    : "Change User informations:"
+
+,"Send Reset Password link" : "Send Reset Password link","Current Balanace" :"Current Balanace"
+
+
+,"Official Info"    :   "Official Info","Personal Information":"Personal Information"
+
+,"Login Log"    : "Login Log"
+
+,"User ID"  : "User ID"
+,"View Client"  : "View Client"
+,"Financial Information"    : "Financial Information"
+
+
+,"Banking Information"  : "Banking Information"
+,"Auto Trader:" : "Auto Trader:","Remember me"  :"Remember me",
+"Forgot your password?" :"Forgot your password?"
+,"Back to Home": "Back to Home",
+"login" : "login",
+"Login to your account" : "Login to your account","Don't have an account yet?"  :"Don't have an account yet?","Sign Up" :"Sign Up"
+
+,"Email address"    : "Email address"
+
+,"Phone Number" : "Phone Number"
+
+
+
+,"Description"  : "Description"
+
+,"Amount Lost"  : "Amount Lost"
+,"Click Here to get your money back !"  : "Click Here to get your money back !"
+
+,"Password" : "Password"
+}

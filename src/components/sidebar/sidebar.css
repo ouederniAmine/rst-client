@@ -1,3 +1,62 @@
 .bg{
   background-color: darkblue;
 }
+
+.control {
+  margin-bottom: 10px;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+}
+.toggle__label {
+  margin-right: 20px;
+}
+.toggle__control {
+  display: none;
+}
+.toggle__control:checked + .toggle__slider {
+  background: #1a9c00;
+}
+.toggle__control:checked + .toggle__slider .toggle__handle {
+  transform: translateX(35px);
+}
+.toggle__control:disabled + .toggle__slider {
+  opacity: 0.4;
+  cursor: unset;
+}
+.toggle__slider {
+  display: flex;
+  height: 30px;
+  width: 65px;
+  padding: 2px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background: rgb(255, 0, 0);
+  transition: background linear 0.1s;
+  overflow: hidden;
+  cursor: pointer;
+}
+.toggle__handle {
+  height: 26px;
+  width: 26px;
+  border-radius: 13px;
+  transform: translateX(0);
+  background: white;
+  transition: transform linear 0.1s;
+}
+.toggle__handle:before, .toggle__handle:after {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.toggle__handle:before {
+  content: "on";
+  left: -23px;
+}
+.toggle__handle:after {
+  content: "off";
+  right: -25px;
+}
+

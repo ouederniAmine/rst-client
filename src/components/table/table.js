@@ -3,9 +3,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
 import { useState  , useEffect} from "react";
 import axios from "axios";
+import { useTranslation } from 'react-i18next';
+
 const Table = (props) => {
   const [data, setData] = useState([]);
   
+  const { t, i18n } = useTranslation();
 
 
   useEffect(() => {
@@ -53,43 +56,43 @@ const userColumns = [
   
   {
     field: "fullname",
-    headerName: "Client Name",
+    headerName:   t('Client Name')      ,
     width: 230,
   },
 
   {
     field: "email",
-    headerName: "Client Email",
+    headerName: t("Client Email"),
     width: 200,
   },
   {
     field: "current_balance",
-    headerName: "Current Balance",
+    headerName: t("Current Balance"),
     width: 200,
   },
   {
     field: "funds_on_hold",
-    headerName: "Funds On Hold",
+    headerName: t("Funds On Hold"),
     width: 200,
   },
   {
     field: "withdrawable_balance",
-    headerName: "Withdrawable Balance",
+    headerName: t("Withdrawable Balance"),
     width: 200,
-  },
+  }
+  ,
   {
-    field: "contact_information",
-    headerName: "Contact Information",
+    field: "last_login_info",
+    headerName: t("Last Login Info"),
     width: 200,
   }
  
 ];
-
   
   return (
     <div className="datatable " style={{ height: 550, width: '100%' }}> 
  <div className="datatableTitle " >
-         Clients
+ {t('Clients')}
       </div>
        
        <DataGrid

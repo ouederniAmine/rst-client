@@ -5,9 +5,11 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 import axios from "axios";
 import { useEffect, useState } from "react";
 import authService from "../../services/auth.service";
+import { useTranslation } from 'react-i18next';
 
 const Widget = ({ type }) => {
   let data = {} ;
+  const { t, i18n } = useTranslation();
 
   
   
@@ -19,10 +21,8 @@ const Widget = ({ type }) => {
         .get("/backend/api/client/"+authService.getCurrentUser().userid)
         .then((res) => {
           setApiData(res.data[0]);
-          console.log(res.data)
         })
         .catch((err) => {
-          console.log(err);
         });
     }, []);
 
@@ -30,7 +30,8 @@ const Widget = ({ type }) => {
   switch (type) {
     case "CurrentBalanace":
       data = {
-        title: "Current Balanace",
+        title:
+        t('Current Balanace'),
         isMoney: false,
         
         icon: (
@@ -46,7 +47,7 @@ const Widget = ({ type }) => {
       break;
     case "FundsonHold":
       data = {
-        title: "Funds on Hold",
+        title: t("Funds on Holds"),
         isMoney: false,
         link: "View all invoices",
         icon: (
@@ -62,7 +63,7 @@ const Widget = ({ type }) => {
       break;
     case "Withdraw":
       data = {
-        title: "Withdrawable funds",
+        title: t("Withdrawable Balance"),
         isMoney: true,
         link: "View net earnings",
         icon: (
@@ -82,8 +83,8 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        <span className="counter">
-          {data.title === "Current Balanace" ? apidata.current_balance : data.title === "Funds on Hold" ? apidata.funds_on_hold : apidata.withdrawable_balance}
+        <span className="counter" style={{fontWeight:"bold"}}>
+          {data.title === "Current Balanace" ? apidata.current_balance : data.title === "Funds on Hold" ? apidata.funds_on_hold : apidata.withdrawable_balance}.00
         </span>
       </div>
       <div className="right">

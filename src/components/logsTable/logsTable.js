@@ -1,11 +1,11 @@
-import "./clientsTable.css";
+import "./logsTable.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import React from "react";
 import { useState  , useEffect} from "react";
 import axios from "axios";
 import { useTranslation } from 'react-i18next';
-const ClientsTable = (props) => {
+const LogsTable = (props) => {
   const [data, setData] = useState([]);
   
 
@@ -13,36 +13,30 @@ const ClientsTable = (props) => {
 
   useEffect(() => {
       axios
-      .get("/backend/api/clients")
+      .get("/backend/api/login-logs")
       .then((res) => {
         let data = [];
         let newData = {
           id:0,
-          fullname:"", 
-          email:"",
-          current_balance:"",
-          funds_on_hold: "",
-          withdrawable_balance: "",
-          last_login_info: ""
+          username:"", 
+          userid:0,
+          time:""
 
         }
           //foreach element in res.data get the id and name and email and currentBalance and put it in newData array
         res.data.map(element => {
           newData.id = element.id;
-          newData.fullname = element.fullname;
-          newData.email = element.email;
-          newData.current_balance = element.current_balance;
-          newData.funds_on_hold = element.funds_on_hold;
-          newData.withdrawable_balance = element.withdrawable_balance;
-          newData.last_login_info = element.last_login_info;
-          //push newData to data array
+          newData.username = element.username;
+          newData.userid = element.userid;
+          newData.time = element.time;
+       
           data.push(newData);
           //reset newData
-          newData = {
+          newData = { 
             id:0,
-            fullname:"",
-            email:"",
-            currentBalance:""
+            username:"",
+            userid:0,
+            time:""
           }
       return newData;  }); 
         setData(data);
@@ -56,34 +50,19 @@ const ClientsTable = (props) => {
     { field: "id", headerName: "ID", width: 70 },
     
     {
-      field: "fullname",
+      field: "username",
       headerName:   t('Client Name')      ,
       width: 230,
     },
   
+    
     {
-      field: "email",
-      headerName: t("Client Email"),
+      field: "userid",
+      headerName: t("User ID"),
       width: 200,
     },
     {
-      field: "current_balance",
-      headerName: t("Current Balance"),
-      width: 200,
-    },
-    {
-      field: "funds_on_hold",
-      headerName: t("Funds On Hold"),
-      width: 200,
-    },
-    {
-      field: "withdrawable_balance",
-      headerName: t("Withdrawable Balance"),
-      width: 200,
-    }
-    ,
-    {
-      field: "last_login_info",
+      field: "time",
       headerName: t("Last Login Info"),
       width: 200,
     }
@@ -110,18 +89,11 @@ const ClientsTable = (props) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={"/app/clients/"+params.row.id }style={{ textDecoration: "none" }}>
-              <div className="viewButton">{t("View")}</div>
+            <Link to={"/app/clients/"+params.row.userid }style={{ textDecoration: "none" }}>
+              <div className="viewButton">{t("View Client")}</div>
             </Link>
-            <Link to={"/app/clients/edit/"+params.row.id }style={{ textDecoration: "none" }}>
-              <div className="viewButton">{t('Edit')}</div>
-            </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              {t("Delete")}
-            </div>
+            
+           
           </div>
         );
       },
@@ -130,15 +102,8 @@ const ClientsTable = (props) => {
   return (
     <div className="datatable">
  <div className="datatableTitle">
-         {t('Clients')}
-         <div>
-         <Link to={ "new"} className="link">
-          {t('Add New User')}
-        </Link>
-
-        <Link to={ "csv"} className="link">
-          {t('Import CSV')}
-        </Link></div>
+         {t('Login Log')}
+  
       </div>
        
        
@@ -154,4 +119,4 @@ const ClientsTable = (props) => {
   );
 };
 
-export default ClientsTable;
+export default LogsTable;

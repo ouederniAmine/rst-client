@@ -8,15 +8,19 @@ import { useState ,useEffect } from "react";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ArticleIcon from '@mui/icons-material/Article';
+import { useTranslation } from 'react-i18next';
+
 const Sidebar = () => {
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate();
     const $targetEl = document.getElementById('small-modal');
     const modal = new Modal($targetEl);
     const [admin, setAdmin] = useState(false);
+    const [auto_trader, setAutoTrader] = useState(true);
     const[loading,setLoading]=useState(true);
     //useEffect to check if user is admin
     useEffect(() => {
-      console.log(authService.getCurrentUser());
         checkAdmin();
     }, []);
     const requestCallback = () => {
@@ -24,10 +28,9 @@ const Sidebar = () => {
             id : authService.getCurrentUser().userid
         })
         .then(function (response) {
-            console.log(response);  })
+            ;  })
         .catch(function (error) {
 
-            console.log(error);
         });
     }
     const requestWithdraw = () => {
@@ -35,9 +38,9 @@ const Sidebar = () => {
             id : authService.getCurrentUser().userid
         })
         .then(function (response) {
-            console.log(response);  })
+              })
         .catch(function (error) { 
-            console.log(error);
+   
         });
     }
 
@@ -49,7 +52,14 @@ const Sidebar = () => {
     const checkAdmin = async () => {
         const response = await fetch(`/backend/api/checkadmin/${authService.getCurrentUser().userid}`);
         const data = await response.json();
-        console.log(data);
+        // check if user is auto trader
+        const response2 = await fetch(`/backend/api/auto_trader/${authService.getCurrentUser().userid}`);
+        const data2 = await response2.json();
+        if (data2.auto_trader) {
+            setAutoTrader(true);
+        }else{
+            setAutoTrader(false);
+        }
         if (data.isAdmin) {
             setAdmin(true);
             setLoading(false);
@@ -91,7 +101,7 @@ const Sidebar = () => {
   src="https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/control.png"
   className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
    border-2 rounded-full  ${!open && "rotate-180"}`}
-  onClick={() => setOpen(!open)} alt="logo"
+  onClick={() => setOpen(!open)} alt="logo" 
 />
 <div className="flex gap-x-4 items-center">
       <img
@@ -121,7 +131,7 @@ const Sidebar = () => {
       >
         <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/User.png`} alt="logo"/>
         <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
-          Dashboard
+          {t('sidebar.dashboard')}
         </span>
       </li> 
       <li
@@ -134,7 +144,7 @@ const Sidebar = () => {
       >
         <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/Folder.png`}  alt="logo"/>
         <span   className={`${!open && "hidden"} text-white origin-left duration-200`}>
-          Clients 
+          {t('sidebar.clients')}
         </span>
       </li> 
       
@@ -149,10 +159,23 @@ const Sidebar = () => {
         >
           <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/Setting.png`} alt="logo" />
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
-            Add Admin
+            {t('sidebar.addAdmin')}
           </span>
         </li>
-   
+        <li 
+          key={7}
+          className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+         my-8"
+            "bg-light-white"
+           `}
+           style={{alignSelf:"baseline"}}
+           onClick={() => navigate("/app/loginlogs")}  
+        >
+              <ArticleIcon/>
+          <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
+          {t('Login Log')}
+          </span>
+        </li> 
       <li 
         key={4}
         className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
@@ -164,7 +187,7 @@ const Sidebar = () => {
       >
     <LogoutIcon/>
         <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
-          Sign Out
+          {t('sidebar.signOut')}
         </span>
       </li> 
     
@@ -175,23 +198,23 @@ const Sidebar = () => {
         
             <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-                    Request Successfully Submitted
+                    {t('Request Successfully Submitted')}
                 </h3>
                 <button onClick={()=>modal.hide()} type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="small-modal">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    <span class="sr-only">Close modal</span>
+                    <span class="sr-only">{t("Close modal")}</span>
                 </button>
             </div>
 
             <div class="p-6 space-y-6">
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                  Your request has been successfully submitted. A representative will call you as soon as possible.
+                  {t("Your request has been successfully submitted. A representative will call you as soon as possible.")}
                 </p>
                
             </div>
       
             <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button onClick={()=>modal.hide()} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                <button onClick={()=>modal.hide()} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{t("I accept")}</button>
           
             </div>
         </div>
@@ -206,17 +229,17 @@ const Sidebar = () => {
       
           <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
               <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-              Request Successfully Submitted
-              </h3>
+      {t('Request Successfully Submitted')}
+                </h3>
               <button onClick={()=>modal.hide()} type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="small-modal">
                   <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                  <span class="sr-only">Close modal</span>
+                  <span class="sr-only">{t('Close modal')}</span>
               </button>
           </div>
 
           <div class="p-6 space-y-6">
               <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                Your withdrawal request is now under review. You will contacted for a vocal confirmation shortly.
+              {t('Your withdrawal request is now under review. You will contacted for a vocal confirmation shortly.')}
               </p>
              
           </div>
@@ -240,7 +263,7 @@ const Sidebar = () => {
         >
           <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/User.png`} alt="logo" />
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
-            Dashboard
+            {t('sidebar.dashboard')}
           </span>
         </li> 
         <li
@@ -253,7 +276,7 @@ const Sidebar = () => {
         >
          <AttachMoneyIcon/>
           <span   className={`${!open && "hidden"} text-white origin-left duration-200`}>
-            Request a withdrawal
+            {t('Request a withdrawal')}
           </span>
         </li> 
         <li
@@ -266,7 +289,7 @@ const Sidebar = () => {
         >
           <LocalPhoneIcon/>
           <span   className={`${!open && "hidden"} text-white origin-left duration-200`}>
-            Request a Callback
+            {t('Request a Callback')}
           </span>
         </li> 
         <li 
@@ -280,7 +303,7 @@ const Sidebar = () => {
         >
           <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/Setting.png`} alt="logo" />
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
-            Edit Info
+          {t('Edit Info')}
           </span>
         </li>
      
@@ -295,10 +318,31 @@ const Sidebar = () => {
         >
               <LogoutIcon/>
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
-            Sign Out
+          {t('sidebar.signOut')}
           </span>
         </li> 
-      
+       
+
+        <li 
+          key={5}
+          className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+         my-8"
+            "bg-light-white"
+           `}
+           style={{alignSelf:"baseline"}}
+
+        >
+             <div class="control">
+    <label class="toggle">
+        <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
+        <input class="toggle__control" type="checkbox"  checked={auto_trader} />
+
+          <div class="toggle__slider">
+            <div class="toggle__handle"></div>
+        </div>
+    </label>
+</div>
+        </li> 
     </ul></>)}
    </>):(<></>)}
   </div>

@@ -4,12 +4,39 @@ import FormAction from "./FormAction";
 import Input from "./Input";
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/auth.service';
-
-const fields=resetPwdFields;
-let fieldsState = {};
-fields.forEach(field=>fieldsState[field.id]='');
+import { useTranslation } from 'react-i18next';
 
 export default function ResetPassword(){
+
+
+
+let fieldsState = {};
+fields.forEach(field=>fieldsState[field.id]='');
+  const { t, i18n } = useTranslation();
+
+    const fields=[
+        {
+            labelText:"New Password",
+            labelFor:"new-Password",
+            id:"newPassword",
+            name:"password",
+            type:"password",
+            autoComplete:"password",
+            isRequired:true,
+            placeholder:"Password"   
+        },
+        {
+            labelText:"Confirm Password",
+            labelFor:"confirm-password",
+            id:"confirm-password",
+            name:"password",
+            type:"password",
+            autoComplete:"confirm-password",
+            isRequired:true,
+            placeholder:"Confirm Password"   
+        }
+    ]
+    
     const [loginState,setLoginState]=useState(fieldsState);
     const navigate = useNavigate();
 
@@ -26,10 +53,8 @@ export default function ResetPassword(){
     //Handle Login API Integration here
     const authenticateUser = () =>{
       let email = window.location.pathname.split("/")[2];
-        console.log(loginState.newPassword);
         authService.resetPassword(email ,  window.location.pathname.split("/")[3] ,loginState.newPassword)
   .then((e) => {
-    console.log("change success", e);
     navigate("/app");
     }
 

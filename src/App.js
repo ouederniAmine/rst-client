@@ -9,6 +9,8 @@ import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
 import PrivateRoute from './services/PrivateRoute';
 import ClientsPage from './pages/ClientsPage';
+import LogsPage from './pages/logsPage/logsPage';
+
 import EditUser from './pages/editUser/editUser';
 import Single from './pages/single/single';
 import ResetPasswordPage from './pages/resetPassword/resetPasswordPage';
@@ -16,7 +18,6 @@ import NewUser from './pages/newUser/newUser';
 import ImportCsv from './pages/importCsv/importCsv';
 import ClientParams from './pages/clientParams/clientParams';
 import NewAdmin from './pages/newAdmin/newAdmin';
-
 export default function App() {
   return (
    
@@ -33,6 +34,10 @@ export default function App() {
                 path="app/settings/:userId"
                 element={<ClientParams/>}
               />
+              <Route
+                path="/app/loginlogs"
+                element={<LogsPage />}
+              />
             <Route path="/app/clients">
               
               <Route index element={<ClientsPage />} />
@@ -40,6 +45,7 @@ export default function App() {
                 path="edit/:userId"
                 element={<EditUser />}
               />
+              
                 
               <Route
                 path="new"

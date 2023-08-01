@@ -2,6 +2,7 @@ import "./importCsv.css";
 import Sidebar from "../../components/sidebar/sidebar";
 import Navbar from "../../components/navbar/navbar";
 import axios from "axios";
+import { useTranslation } from 'react-i18next';
 
 import { useState} from "react";
 import {
@@ -90,6 +91,7 @@ const ImportCsv = ({ inputs, title }) => {
   const [removeHoverColor, setRemoveHoverColor] = useState(
     DEFAULT_REMOVE_HOVER_COLOR
   );
+  const { t, i18n } = useTranslation();
 
     const [data, setData] = useState([[]]);
   
@@ -100,7 +102,7 @@ const ImportCsv = ({ inputs, title }) => {
         navigate("/app/clients/");
       })
       .catch((err) => {
-        console.log(err);
+
       });
     };
     
@@ -114,14 +116,14 @@ const ImportCsv = ({ inputs, title }) => {
       <div className="top">
       <div className="left">
           <div className='listContainer'>
-          <h1 className="title " style={{"color":"black"}}>Add Multiple Clients using CSV:</h1>
+          <h1 className="title " style={{"color":"black"}}>{t('Add Multiple Clients using CSV:')}</h1>
       <CSVReader
       config={{
         header: true,
         skipEmptyLines: true,
       }}
   onUploadAccepted={(results) => {
-    console.log(results.data);
+
     setData(results.data);
     setZoneHover(false);
   }}
@@ -180,13 +182,13 @@ const ImportCsv = ({ inputs, title }) => {
             </div>
           </>
         ) : (
-          'Drop CSV file here to upload'
+          t('Drop CSV file here to upload')
         )}
       </div>
     </>
   )}
 </CSVReader>
-<div className="flex flex-wrap -mx-3 mb-6"><button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Send Data</button>
+<div className="flex flex-wrap -mx-3 mb-6"><button type="button" onClick={(e)=>{e.preventDefault() ; sendData()}} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{t('Send Data')}</button>
 </div>
 </div></div>
       </div>
