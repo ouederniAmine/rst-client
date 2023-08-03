@@ -12,7 +12,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const $targetEl = document.getElementById('small-modal');
     const modal = new Modal($targetEl);

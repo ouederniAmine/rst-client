@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { signupFields } from "../../constants/formFields"
 import FormAction from "./FormAction";
 import Input from "./Input";
 import React from "react";
@@ -9,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 
 function Signup(){
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const fields=[
     {
         labelText:"Full Name",

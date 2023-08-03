@@ -9,7 +9,7 @@ const ClientsTable = (props) => {
   const [data, setData] = useState([]);
   
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
       axios

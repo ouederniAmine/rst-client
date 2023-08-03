@@ -9,7 +9,7 @@ import CurrencyInput from 'react-currency-input-field';
 import { useTranslation } from 'react-i18next';
 
 const NewUser = ({ inputs, title }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   // get data from variable api endpoint
   const [btc, setBtc] = useState(false);

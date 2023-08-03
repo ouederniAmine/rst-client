@@ -29,13 +29,13 @@ const countries = [
 
 const Navbar = () => {
   const [country, setCountry] = React.useState(UK);
-  const { t, i18n } = useTranslation();
+  const { i18n} = useTranslation();
 useEffect(() => {
   if (i18n.language === "ar" ) {
     setCountry(SaudiArabia);
     document.getElementsByTagName('html')[0].setAttribute("dir", "rtl");
   }
-}, [])
+}, [i18n.language])
   
   const [open, setOpen] = React.useState(false);
 

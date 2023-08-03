@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 const EditUser = ({ inputs, title }) => {
   // get data from variable api endpoint
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [btc, setBtc] = useState(false);
   const navigate = useNavigate();

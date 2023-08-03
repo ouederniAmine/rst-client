@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 
 export default function FormExtra(){
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
     return(
         <div className="flex items-center justify-between ">

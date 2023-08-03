@@ -91,7 +91,7 @@ const ImportCsv = ({ inputs, title }) => {
   const [removeHoverColor, setRemoveHoverColor] = useState(
     DEFAULT_REMOVE_HOVER_COLOR
   );
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
     const [data, setData] = useState([[]]);
   

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useNavigate } from "react-router";
 const Single = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [data, setData] = useState({
     id: 0,

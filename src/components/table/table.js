@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 const Table = (props) => {
   const [data, setData] = useState([]);
   
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
 
   useEffect(() => {

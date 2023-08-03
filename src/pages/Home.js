@@ -17,7 +17,7 @@ import authService from '../services/auth.service';
 import { useTranslation } from 'react-i18next';
 
 const Home = (props) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const geolocationAPI = navigator.geolocation;
@@ -121,11 +121,11 @@ const Home = (props) => {
                         </div>
 
                     </div>
-                    <div className='centerc'><img src={Visa} width="90px"></img>
-                        <img style={{ margin: "0 10px" }} src={Mastercard} width="90px"></img>
-                        <img style={{ margin: "0 10px" }} src={BTC} width="90px"></img>
-                        <img style={{ margin: "0 10px" }} src={Paypal} width="90px"></img>
-                        <img src={Western} width="90px"></img></div>
+                    <div className='centerc'><img src={Visa} width="90px" alt='visa'></img>
+                        <img style={{ margin: "0 10px" }} src={Mastercard} width="90px" alt='visa'></img>
+                        <img style={{ margin: "0 10px" }} src={BTC} width="90px" alt='visa'></img>
+                        <img style={{ margin: "0 10px" }} src={Paypal} width="90px" alt='visa'></img>
+                        <img src={Western} width="90px" alt='visa'></img></div>
                 </div></>) :
                     (<> <div className="homeContainer">
                         <Navbar />

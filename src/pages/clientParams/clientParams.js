@@ -8,7 +8,7 @@ import BankLogo from "../../assets/bank.svg";
 import { useTranslation } from 'react-i18next';
 
 const ClientParams = ({ inputs, title }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   // get data from variable api endpoint
   const [btc, setBtc] = useState(false);

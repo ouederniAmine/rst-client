@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 const Widget = ({ type }) => {
   let data = {} ;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   
   

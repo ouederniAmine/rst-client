@@ -1,26 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.63114513.chunk.css",
-    "main.js": "/static/js/main.4675fb36.chunk.js",
-    "main.js.map": "/static/js/main.4675fb36.chunk.js.map",
+    "main.css": "/static/css/main.879488a3.chunk.css",
+    "main.js": "/static/js/main.fe999c70.chunk.js",
+    "main.js.map": "/static/js/main.fe999c70.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.fcfc12b8.js",
     "runtime-main.js.map": "/static/js/runtime-main.fcfc12b8.js.map",
     "static/css/2.0917025e.chunk.css": "/static/css/2.0917025e.chunk.css",
-    "static/js/2.9d37bd6b.chunk.js": "/static/js/2.9d37bd6b.chunk.js",
-    "static/js/2.9d37bd6b.chunk.js.map": "/static/js/2.9d37bd6b.chunk.js.map",
+    "static/js/2.cbe1eb34.chunk.js": "/static/js/2.cbe1eb34.chunk.js",
+    "static/js/2.cbe1eb34.chunk.js.map": "/static/js/2.cbe1eb34.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.0917025e.chunk.css.map": "/static/css/2.0917025e.chunk.css.map",
-    "static/css/main.63114513.chunk.css.map": "/static/css/main.63114513.chunk.css.map",
-    "static/js/2.9d37bd6b.chunk.js.LICENSE.txt": "/static/js/2.9d37bd6b.chunk.js.LICENSE.txt",
+    "static/css/main.879488a3.chunk.css.map": "/static/css/main.879488a3.chunk.css.map",
+    "static/js/2.cbe1eb34.chunk.js.LICENSE.txt": "/static/js/2.cbe1eb34.chunk.js.LICENSE.txt",
     "static/media/Bedaya.2eac45ec.png": "/static/media/Bedaya.2eac45ec.png",
     "static/media/bank.1fd3a696.svg": "/static/media/bank.1fd3a696.svg",
-    "static/media/logo white.7ec7881f.jpg": "/static/media/logo white.7ec7881f.jpg"
+    "static/media/btc.eb7b9c42.svg": "/static/media/btc.eb7b9c42.svg",
+    "static/media/logo white.7ec7881f.jpg": "/static/media/logo white.7ec7881f.jpg",
+    "static/media/mastercard.df5ce7a5.svg": "/static/media/mastercard.df5ce7a5.svg",
+    "static/media/paypal.701dab8c.svg": "/static/media/paypal.701dab8c.svg",
+    "static/media/saudi-arabia.0fd360f8.png": "/static/media/saudi-arabia.0fd360f8.png",
+    "static/media/visa.b67ad38d.svg": "/static/media/visa.b67ad38d.svg",
+    "static/media/western.047445c0.svg": "/static/media/western.047445c0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.fcfc12b8.js",
     "static/css/2.0917025e.chunk.css",
-    "static/js/2.9d37bd6b.chunk.js",
-    "static/css/main.63114513.chunk.css",
-    "static/js/main.4675fb36.chunk.js"
+    "static/js/2.cbe1eb34.chunk.js",
+    "static/css/main.879488a3.chunk.css",
+    "static/js/main.fe999c70.chunk.js"
   ]
 }

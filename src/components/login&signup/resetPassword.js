@@ -1,18 +1,14 @@
 import {  useState } from 'react';
-import { resetPwdFields } from "../../constants/formFields";
 import FormAction from "./FormAction";
 import Input from "./Input";
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/auth.service';
-import { useTranslation } from 'react-i18next';
 
 export default function ResetPassword(){
 
 
 
 let fieldsState = {};
-fields.forEach(field=>fieldsState[field.id]='');
-  const { t, i18n } = useTranslation();
 
     const fields=[
         {
@@ -36,7 +32,8 @@ fields.forEach(field=>fieldsState[field.id]='');
             placeholder:"Confirm Password"   
         }
     ]
-    
+    fields.forEach(field=>fieldsState[field.id]='');
+
     const [loginState,setLoginState]=useState(fieldsState);
     const navigate = useNavigate();
 
