@@ -159,7 +159,7 @@ const NewUser = ({ inputs, title }) => {
     <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
     
     <label for="countries" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">{t('Select a currency')}</label>
-    <select id="countries" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value={data.currency} onChange={ (e)=>{e.preventDefault();  setData({
+    <select id="countries" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value={data.currency} defaultValue={"$"} onChange={ (e)=>{e.preventDefault();  setData({
             ...data, 
             currency: e.target.value
           });
@@ -179,13 +179,18 @@ const NewUser = ({ inputs, title }) => {
       <CurrencyInput
   id="input-example"
   name="input-name"
-  value={data.current_balance}
   className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
   placeholder="1.000,000"
-  defaultValue={1000}
   suffix={data.currency}
   decimalSeparator="," groupSeparator="." 
   decimalsLimit={3}
+  onChange={(e)=>{e.preventDefault();  setData({
+    ...data,
+    current_balance: e.target.value
+  });
+
+  }}
+
 
 />
     </div>
@@ -197,13 +202,17 @@ const NewUser = ({ inputs, title }) => {
 <CurrencyInput
   id="input-example"
   name="input-name"
-  value={data.funds_on_hold}
   className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
   placeholder="1.000,000"
-  defaultValue={1000}
   suffix={data.currency}
   decimalSeparator="," groupSeparator="." 
   decimalsLimit={3}
+  onChange={(e)=>{e.preventDefault();  setData({
+    ...data,
+    funds_on_hold: e.target.value
+  });
+
+  }}
 
 />
     </div>
@@ -215,13 +224,17 @@ const NewUser = ({ inputs, title }) => {
   id="input-example"
   name="input-name"
   suffix={data.currency}
-
+  
   className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
   placeholder="1.000,000"
-  value={data.withdrawable_funds}
-  defaultValue={1000}
   decimalSeparator="," groupSeparator="." 
   decimalsLimit={3}
+  onChange={(e)=>{e.preventDefault();  setData({
+    ...data, 
+    withdrawable_balance: e.target.value
+  });
+
+  }}
 
 />
     </div>
@@ -348,14 +361,14 @@ const NewUser = ({ inputs, title }) => {
     <div class="control">
     <label class="toggle">
         <span class="toggle__label">Auto Trader:</span>
-        <input class="toggle__control" type="checkbox"  value={data.auto_trader} onChange={(e) => {
+        <input class="toggle__control" type="checkbox"   onChange={(e) => {
                         e.preventDefault(); setData({
                           ...data,
-                          auto_trader: e.target.checked
+                          auto_trader: e.target.checked ? 1 : 0
                         });
 
                       }}/>
-        <div class="toggle__slider">
+        <div style={{"direction":"ltr","unicode-bidi":"bidi-override"}} class="toggle__slider">
             <div class="toggle__handle"></div>
         </div>
     </label>

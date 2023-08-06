@@ -154,8 +154,7 @@ const Sidebar = () => {
          my-8"
             "bg-light-white"
            `}
-           style={{alignSelf:"baseline"}}
-           onClick={() => navigate("/app/newAdmin/")} 
+             onClick={() => navigate("/app/newAdmin/")} 
         >
           <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/Setting.png`} alt="logo" />
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
@@ -168,8 +167,7 @@ const Sidebar = () => {
          my-8"
             "bg-light-white"
            `}
-           style={{alignSelf:"baseline"}}
-           onClick={() => navigate("/app/loginlogs")}  
+             onClick={() => navigate("/app/loginlogs")}  
         >
               <ArticleIcon/>
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
@@ -182,7 +180,6 @@ const Sidebar = () => {
        my-8"
           "bg-light-white"
          `}
-         style={{alignSelf:"baseline"}}
          onClick={signOutUser} 
       >
     <LogoutIcon/>
@@ -298,8 +295,7 @@ const Sidebar = () => {
          my-8"
             "bg-light-white"
            `}
-           style={{alignSelf:"baseline"}}
-           onClick={() => navigate("/app/settings/" +JSON.parse( localStorage.getItem("user")).userid)} 
+             onClick={() => navigate("/app/settings/" +JSON.parse( localStorage.getItem("user")).userid)} 
         >
           <img src={`https://raw.githubusercontent.com/Sridhar-C-25/sidebar_reactTailwind/main/src/assets/Setting.png`} alt="logo" />
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
@@ -313,8 +309,7 @@ const Sidebar = () => {
          my-8"
             "bg-light-white"
            `}
-           style={{alignSelf:"baseline"}}
-           onClick={signOutUser} 
+             onClick={signOutUser} 
         >
               <LogoutIcon/>
           <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
@@ -329,15 +324,14 @@ const Sidebar = () => {
          my-8"
             "bg-light-white"
            `}
-           style={{alignSelf:"baseline"}}
-
+  
         >
              <div class="control">
-    <label class="toggle">
+             <label class="toggle">
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
         <input class="toggle__control" type="checkbox"  checked={auto_trader} />
 
-          <div class="toggle__slider">
+          <div style={{"direction":"ltr","unicode-bidi":"bidi-override"}} class="toggle__slider">
             <div class="toggle__handle"></div>
         </div>
     </label>
