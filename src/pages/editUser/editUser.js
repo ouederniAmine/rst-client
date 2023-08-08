@@ -423,16 +423,20 @@ const EditUser = ({ inputs, title }) => {
           <div class="control">
   <label class="toggle">
       <span class="toggle__label">{t("Auto Trader:")}</span>
-                <Switch
-             value={data.auto_trader} onChange={(e) => {
-               console.log(data.auto_trader);
+            
+               <input class="toggle__control" type="checkbox"  defaultChecked={data.auto_trader} onChange={(e) => {
+                
+            
                                                setData({
                         ...data,
                         auto_trader:  Number(e.target.checked)
                       });
 
-                    }}
-/>
+                    }}/>
+      <div style={{"direction":"ltr"}} class="toggle__slider">
+          <div class="toggle__handle"></div>
+      </div>
+
       
   </label>
 </div>
