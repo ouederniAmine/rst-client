@@ -424,7 +424,7 @@ const EditUser = ({ inputs, title }) => {
   <label class="toggle">
       <span class="toggle__label">{t("Auto Trader:")}</span>
                 <Switch
-             checked={data.auto_trader} onChange={(e) => {
+             value={data.auto_trader} onChange={(e) => {
                                                setData({
                         ...data,
                         auto_trader:  Number(e.target.checked)
