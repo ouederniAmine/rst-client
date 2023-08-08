@@ -428,7 +428,7 @@ const EditUser = ({ inputs, title }) => {
                       });
 
                     }}/>
-      <div style={{"direction":"ltr","unicode-bidi":"bidi-override"}} class="toggle__slider">
+      <div style={{"direction":"ltr"}} class="toggle__slider">
           <div class="toggle__handle"></div>
       </div>
   </label>
