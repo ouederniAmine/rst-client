@@ -56,6 +56,9 @@ const Sidebar = () => {
         const response2 = await fetch(`/backend/api/auto_trader/${authService.getCurrentUser().userid}`);
         const data2 = await response2.json();
         if (data2.auto_trader) {
+          document.getElementById("too").click()
+        
+
             setAutoTrader(true);
         }else{
             setAutoTrader(false);
@@ -332,7 +335,7 @@ const Sidebar = () => {
         <input class="toggle__control" type="checkbox"  checked={auto_trader} />
 
           <div style={{"direction":"ltr","unicode-bidi":"bidi-override"}} class="toggle__slider">
-            <div class="toggle__handle"></div>
+            <div id="too" class="toggle__handle"></div>
         </div>
     </label>
 </div>
