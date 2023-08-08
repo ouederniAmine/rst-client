@@ -66,7 +66,9 @@ const EditUser = ({ inputs, title }) => {
       .get("/backend/api/client/" + clientId)
       .then((res) => {
         setData(res.data[0]);
-
+        if(data.auto_trader){
+          document.getElementById("too").click()
+        }
       })
       .catch((err) => {
 
@@ -424,7 +426,7 @@ const EditUser = ({ inputs, title }) => {
   <label class="toggle">
       <span class="toggle__label">{t("Auto Trader:")}</span>
             
-               <input class="toggle__control" type="checkbox"  defaultChecked={data.auto_trader} onChange={(e) => {
+               <input class="toggle__control" type="checkbox"  defaultChecked={0} onChange={(e) => {
                 
             
                                                setData({
