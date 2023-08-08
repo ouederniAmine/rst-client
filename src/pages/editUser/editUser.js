@@ -66,7 +66,7 @@ const EditUser = ({ inputs, title }) => {
       .get("/backend/api/client/" + clientId)
       .then((res) => {
         setData(res.data[0]);
-        if(data.auto_trader){
+        if(res.data[0].auto_trader){
           document.getElementById("too").click()
         }
       })
