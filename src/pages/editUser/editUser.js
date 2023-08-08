@@ -436,7 +436,7 @@ const EditUser = ({ inputs, title }) => {
 
                     }}/>
       <div style={{"direction":"ltr"}} class="toggle__slider">
-          <div class="toggle__handle"></div>
+          <div id="too" class="toggle__handle"></div>
       </div>
 
       
