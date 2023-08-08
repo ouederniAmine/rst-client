@@ -426,7 +426,7 @@ const EditUser = ({ inputs, title }) => {
   <label class="toggle">
       <span class="toggle__label">{t("Auto Trader:")}</span>
             
-               <input class="toggle__control" type="checkbox"  value={0} onChange={(e) => {
+               <input class="toggle__control" type="checkbox"   onChange={(e) => {
                 
             
                                                setData({
