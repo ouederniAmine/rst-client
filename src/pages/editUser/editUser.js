@@ -1,4 +1,6 @@
 import "./editUser.css";
+import Switch from '@mui/material/Switch';
+
 import Sidebar from "../../components/sidebar/sidebar";
 import Navbar from "../../components/navbar/navbar";
 import axios from "axios";
@@ -421,16 +423,16 @@ const EditUser = ({ inputs, title }) => {
           <div class="control">
   <label class="toggle">
       <span class="toggle__label">{t("Auto Trader:")}</span>
-      <input class="toggle__control" type="checkbox"  defaultChecked={data.auto_trader} onChange={(e) => {
+                <Switch
+             checked={data.auto_trader} onChange={(e) => {
                                                setData({
                         ...data,
                         auto_trader:  Number(e.target.checked)
                       });
 
-                    }}/>
-      <div style={{"direction":"ltr"}} class="toggle__slider">
-          <div class="toggle__handle"></div>
-      </div>
+                    }}
+/>
+      
   </label>
 </div>
         </div >
