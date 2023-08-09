@@ -18,7 +18,7 @@ const Sidebar = () => {
     const $targetEl = document.getElementById('small-modal');
     const modal = new Modal($targetEl);
     const [admin, setAdmin] = useState(false);
-    const [auto_trader, setAutoTrader] = useState(true);
+    const [auto_trader, setAutoTrader] = useState(1);
     const[loading,setLoading]=useState(true);
     //useEffect to check if user is admin
     useEffect(() => {
@@ -57,12 +57,11 @@ const Sidebar = () => {
         const response2 = await fetch(`/backend/api/auto_trader/${authService.getCurrentUser().userid}`);
         const data2 = await response2.json();
         if (data2.auto_trader) {
-          document.getElementById("too").click()
-        
+         
 
-            setAutoTrader(true);
+            setAutoTrader(1);
         }else{
-            setAutoTrader(false);
+            setAutoTrader(0);
         }
         if (data.isAdmin) {
             setAdmin(true);
