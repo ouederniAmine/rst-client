@@ -58,7 +58,7 @@ console.log(auto_trader)
         const response2 = await fetch(`/backend/api/client/${authService.getCurrentUser().userid}`);
         const data2 = await response2.json();
        console.log(data2[0].auto_trader)
-        if (data2[0].auto_trader) {
+        if (data2[0].auto_trader==="1") {
          setTimeout(() => {
      document.getElementById('too').classList.add('on')
 
