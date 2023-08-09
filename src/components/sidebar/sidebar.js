@@ -22,7 +22,7 @@ const Sidebar = () => {
     const[loading,setLoading]=useState(true);
     //useEffect to check if user is admin
     useEffect(() => {
-console.log(auto_trader===true)
+console.log(auto_trader)
         checkAdmin();
     }, []);
     const requestCallback = () => {
