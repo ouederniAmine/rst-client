@@ -429,7 +429,7 @@ console.log(res.data[0])
             
                
 
-    <Switch checked={data.auto_trader===1}
+    <Switch checked={data.auto_trader==="1"}
   onChange={(e) => {
 console.log(data.auto_trader)
     setData({
