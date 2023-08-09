@@ -336,7 +336,7 @@ const Sidebar = () => {
           <Switch checked={auto_trader==="1"} 
    onChange={(e) => { 
  
-     setData(Number(e.target.checked)) }}/>
+     setAutoTrader(Number(e.target.checked)) }}/>
     </label>
 </div>
         </li> 
