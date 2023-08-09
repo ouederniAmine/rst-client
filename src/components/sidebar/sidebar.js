@@ -18,7 +18,7 @@ const Sidebar = () => {
     const $targetEl = document.getElementById('small-modal');
     const modal = new Modal($targetEl);
     const [admin, setAdmin] = useState(false);
-    const [auto_trader, setAutoTrader] = useState(1);
+    const [auto_trader, setAutoTrader] = useState(true);
     const[loading,setLoading]=useState(true);
     //useEffect to check if user is admin
     useEffect(() => {
@@ -59,9 +59,9 @@ const Sidebar = () => {
         if (data2.auto_trader) {
          
 
-            setAutoTrader(1);
+            setAutoTrader(true);
         }else{
-            setAutoTrader(0);
+            setAutoTrader(false);
         }
         if (data.isAdmin) {
             setAdmin(true);
@@ -332,10 +332,10 @@ const Sidebar = () => {
              <div class="control">
              <label class="toggle">
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
-          <Switch checked={auto_trader==="1"} 
+          <Switch checked={auto_trader} 
    onChange={(e) => { 
  
-     setAutoTrader(Number(e.target.checked)) }}/>
+     setAutoTrader(e.target.checked) }}/>
     </label>
 </div>
         </li> 
