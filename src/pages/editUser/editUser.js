@@ -435,7 +435,7 @@ console.log(res.data[0])
 console.log(data.auto_trader)
     setData({
       ...data,
-     auto_trader:Number(e.target.checked),
+     auto_trader:Number(e),
     }) }}/>
 
       
