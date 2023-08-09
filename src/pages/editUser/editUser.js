@@ -1,6 +1,4 @@
 import "./editUser.css";
-import Switch from '@mui/material/Switch';
-
 import Sidebar from "../../components/sidebar/sidebar";
 import Navbar from "../../components/navbar/navbar";
 import axios from "axios";
