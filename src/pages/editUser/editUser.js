@@ -429,13 +429,15 @@ console.log(res.data[0])
             
                
 
-    <Switch checked={data.auto_trader==="1"}
-
-  onChange={(e) => {
+    <Switch
+  checked={data.auto_trader === "1"}
+  onChange={() => {
     setData({
       ...data,
-     auto_trader:Number(e),
-    }) }}/>
+      auto_trader: data.auto_trader === "1" ? "0" : "1",
+    });
+  }}
+/>
 
       
   </label>
