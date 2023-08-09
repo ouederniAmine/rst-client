@@ -61,12 +61,13 @@ console.log(auto_trader)
         if (data2.auto_trader) {
          setTimeout(() => {
      document.getElementById('too').classList.add('on')
+document.getElementById('too').value="ON"
     }, 10)
            
             setAutoTrader("on");
         }else{
 setTimeout(() => {
-     document.getElementById('too').classList.add('off')
+ document.getElementById('too').value="OFF"    document.getElementById('too').classList.add('off')
     }, 10)
        setAutoTrader("off");
         }
