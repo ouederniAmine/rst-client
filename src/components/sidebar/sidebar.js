@@ -65,7 +65,9 @@ console.log(auto_trader)
            
             setAutoTrader("on");
         }else{
-
+setTimeout(() => {
+     document.getElementById('too').classList.add('off')
+    }, 10)
        setAutoTrader("off");
         }
         if (data.isAdmin) {
