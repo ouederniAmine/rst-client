@@ -1,9 +1,9 @@
 import "./editUser.css";
+import Switch from "react-switch";
 import Sidebar from "../../components/sidebar/sidebar";
 import Navbar from "../../components/navbar/navbar";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import Switch from '@mui/material/Switch';
 import { useState, useEffect } from "react";
 import BankLogo from "../../assets/bank.svg";
 import CurrencyInput, { formatValue } from 'react-currency-input-field';
@@ -429,8 +429,8 @@ console.log(res.data[0])
             
                
 
-    <Switch defaultChecked={data.auto_trader==="1"}
-color={data.auto_trader ? 'success' : 'error'}
+    <Switch checked={data.auto_trader==="1"}
+
   onChange={(e) => {
 console.log(data.auto_trader)
     setData({
