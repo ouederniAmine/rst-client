@@ -428,15 +428,18 @@ console.log(res.data[0])
   <label class="toggle">
       <span class="toggle__label">{t("Auto Trader:")}</span>
             
-               <input class="toggle__control" type="checkbox"   onChange={(e) => {
-                
-            
-                                               setData({
-                        ...data,
-                        auto_trader:  Number(e.target.checked)
-                      });
+               <input
+  className="toggle__control"
+  type="checkbox"
+  checked={data.auto_trader}
+  onChange={(e) => {
+    setData({
+      ...data,
+      auto_trader: e.target.checked,
+    });
+  }}
+/>
 
-                    }}/>
       <div style={{"direction":"ltr"}} class="toggle__slider">
           <div id="too" class="toggle__handle"></div>
       </div>
