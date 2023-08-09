@@ -332,7 +332,7 @@ const Sidebar = () => {
              <div class="control">
              <label class="toggle">
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
-          <Switch checked={auto_trader} 
+          <Switch value={true} 
   disabled/>
     </label>
 </div>
