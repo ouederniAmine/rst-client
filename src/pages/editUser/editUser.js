@@ -430,7 +430,7 @@ console.log(res.data[0])
                
 
     <Switch checked={data.auto_trader==="1"}
-color={autoTrader ? 'green' : 'red'}
+color={data.auto_trader ? 'green' : 'red'}
   onChange={(e) => {
 console.log(data.auto_trader)
     setData({
