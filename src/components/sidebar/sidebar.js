@@ -60,7 +60,7 @@ console.log(auto_trader)
         if (data2.auto_trader) {
          setTimeout(() => {
      document.getElementById('too').classList.add('on')
-    }, 1000)
+    }, 10)
            
             setAutoTrader("on");
         }else{
