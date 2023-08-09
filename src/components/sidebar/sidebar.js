@@ -22,7 +22,7 @@ const Sidebar = () => {
     const[loading,setLoading]=useState(true);
     //useEffect to check if user is admin
     useEffect(() => {
-console.log(auto_trader)
+console.log(auto_trader===true)
         checkAdmin();
     }, []);
     const requestCallback = () => {
@@ -333,8 +333,8 @@ console.log(auto_trader)
              <div class="control">
              <label class="toggle">
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
-         <div className={`circle-toggle ${auto_trader ? 'on' : 'off'}`} >
-      {auto_trader ? 'ON' : 'OFF'}
+         <div className={`circle-toggle ${auto_trader===true ? 'on' : 'off'}`} >
+      {auto_trader===true? 'ON' : 'OFF'}
     </div>
     </label>
 </div>
