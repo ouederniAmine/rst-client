@@ -2,6 +2,7 @@ import "./sidebar.css";
 import { Modal } from 'flowbite';
 import axios from "axios";
 import authService from '../../services/auth.service';
+import Switch from '@mui/material/Switch';
 import { useNavigate } from 'react-router-dom';
 import img from "../../assets/Bedaya.png";
 import { useState ,useEffect } from "react";
@@ -332,7 +333,7 @@ const Sidebar = () => {
              <div class="control">
              <label class="toggle">
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
-          <Switch checked={data.auto_trader==="1"} 
+          <Switch checked={auto_trader==="1"} 
    onChange={(e) => { 
  console.log(data.auto_trader) 
      setData({ 
