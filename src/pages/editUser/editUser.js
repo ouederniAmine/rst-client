@@ -433,8 +433,8 @@ console.log(res.data[0])
   onChange={(e) => {
     setData({
       ...data,
-      auto_trader: Number (e.target.checked),
-    });  />
+     auto_trader:Number(e.target.checked),
+    }) }}/>
 
       
   </label>
