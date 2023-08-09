@@ -66,7 +66,7 @@ const EditUser = ({ inputs, title }) => {
         setData(res.data[0]);
         if(res.data[0].auto_trader){
 console.log(res.data[0])
-         document.getElementsByClassName("toggle__handle")[0].click()
+       
  document.getElementById("too").click()
         }
       })
