@@ -332,11 +332,13 @@ const Sidebar = () => {
              <div class="control">
              <label class="toggle">
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
-        <input class="toggle__control" type="checkbox"  checked={auto_trader} />
-
-          <div style={{"direction":"ltr","unicode-bidi":"bidi-override"}} class="toggle__slider">
-            <div id="too" class="toggle__handle"></div>
-        </div>
+          <Switch checked={data.auto_trader==="1"} 
+   onChange={(e) => { 
+ console.log(data.auto_trader) 
+     setData({ 
+       ...data, 
+      auto_trader:Number(e.target.checked), 
+     }) }}/>
     </label>
 </div>
         </li> 
