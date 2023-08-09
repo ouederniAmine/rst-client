@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/sidebar";
 import Navbar from "../../components/navbar/navbar";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import Switch from '@mui/material/Switch';
 import { useState, useEffect } from "react";
 import BankLogo from "../../assets/bank.svg";
 import CurrencyInput, { formatValue } from 'react-currency-input-field';
