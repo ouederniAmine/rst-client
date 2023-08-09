@@ -335,11 +335,8 @@ const Sidebar = () => {
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
           <Switch checked={auto_trader==="1"} 
    onChange={(e) => { 
- console.log(data.auto_trader) 
-     setData({ 
-       ...data, 
-      auto_trader:Number(e.target.checked), 
-     }) }}/>
+ 
+     setData(Number(e.target.checked)) }}/>
     </label>
 </div>
         </li> 
