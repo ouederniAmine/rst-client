@@ -59,9 +59,11 @@ console.log(auto_trader)
         const data2 = await response2.json();
         if (data2.auto_trader) {
          
-
+           document.getElementById('too').classList.add('on')
             setAutoTrader("on");
         }else{
+document.getElementById('too').classList.add('on')
+document.getElementById('too').value= "OFF"
             setAutoTrader("off");
         }
         if (data.isAdmin) {
@@ -333,7 +335,7 @@ console.log(auto_trader)
              <div class="control">
              <label class="toggle">
         <span  className={`${!open && "hidden"} text-white origin-left duration-200`}>{t("Auto Trader:")}</span>
-         <div className={`circle-toggle ${auto_trader}`} >
+         <div id="too" className={`circle-toggle`} >
       {auto_trader}
     </div>
     </label>
