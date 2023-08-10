@@ -30,7 +30,8 @@ console.log(auto_trader)
         checkAdmin();
 
 setOpen(!open)
-setTimeout(()=>{setOpen(!open)},500)
+setTimeout(()=>{setOpen(!open)
+document.getElementById("switch").click()},500)
     }, []);
     const requestCallback = () => {
         axios.post('/backend/api/send-callback', {
@@ -129,6 +130,7 @@ setTimeout(() => {
 />
 <div className="flex gap-x-4 items-center">
       <img
+id="switch"
         src={img}
         className={`logo cursor-pointer duration-500 ${
           open && "rotate-[360deg]" 
