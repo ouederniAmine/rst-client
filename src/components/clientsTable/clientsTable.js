@@ -39,11 +39,15 @@ const ClientsTable = (props) => {
           data.push(newData);
           //reset newData
           newData = {
-            id:0,
-            fullname:"",
-            email:"",
-            currentBalance:""
-          }
+          id:0,
+          fullname:"", 
+          email:"",
+          current_balance:"",
+          funds_on_hold: "",
+          withdrawable_balance: "",
+          last_login_info: ""
+
+        }
       return newData;  }); 
         setData(data);
       })
