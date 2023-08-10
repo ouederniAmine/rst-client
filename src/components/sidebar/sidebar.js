@@ -13,7 +13,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
-const [open, setOpen] = useState(false);
+const [open, setOpen] = useState(true);
   
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ console.log(auto_trader)
         checkAdmin();
 
 setOpen(!open)
-
+setTimeout(()=>{setOpen(!open)},500)
     }, []);
     const requestCallback = () => {
         axios.post('/backend/api/send-callback', {
