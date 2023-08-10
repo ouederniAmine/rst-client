@@ -33,7 +33,7 @@ const Widget = ({ type }) => {
         title:
         t('Current Balanace'),
         isMoney: false,
-        
+        type:1,
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -48,7 +48,7 @@ const Widget = ({ type }) => {
     case "FundsonHold":
       data = {
         title: t("Funds on Holds"),
-        isMoney: false,
+        isMoney: false,type:2,
         link: "View all invoices",
         icon: (
           <ShoppingCartOutlinedIcon
@@ -64,7 +64,7 @@ const Widget = ({ type }) => {
     case "Withdraw":
       data = {
         title: t("Withdrawable Balance"),
-        isMoney: true,
+        isMoney: true,type:3,
         link: "View net earnings",
         icon: (
           <MonetizationOnOutlinedIcon
@@ -84,7 +84,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter" style={{fontWeight:"bold"}}>
-          {data.title === "Current Balanace" ? apidata.current_balance : data.title === "Funds on Hold" ? apidata.funds_on_hold : apidata.withdrawable_balance}.00
+          {data.type === 1 ? apidata.current_balance : data.title === 2 ? apidata.funds_on_hold : apidata.withdrawable_balance}.00
         </span>
       </div>
       <div className="right">
