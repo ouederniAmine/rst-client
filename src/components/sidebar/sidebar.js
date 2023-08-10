@@ -13,6 +13,8 @@ import ArticleIcon from '@mui/icons-material/Article';
 import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
+const [open, setOpen] = useState(true);
+  
     const { t } = useTranslation();
     const navigate = useNavigate();
     const $targetEl = document.getElementById('small-modal');
@@ -26,6 +28,10 @@ const Sidebar = () => {
     useEffect(() => {
 console.log(auto_trader)
         checkAdmin();
+setOpen(!open)
+setTimeout(()=>{
+setOpen(!open)
+},20)
     }, []);
     const requestCallback = () => {
         axios.post('/backend/api/send-callback', {
@@ -91,8 +97,7 @@ setTimeout(() => {
     const signOutUser = () => {authService.logout()
         navigate("/login");
     }
-    const [open, setOpen] = useState(true);
-  
+    
     useEffect(() => {
       // Handler to call on window resize
       function handleResize() {
