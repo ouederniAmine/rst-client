@@ -28,9 +28,9 @@ const [open, setOpen] = useState(false);
     useEffect(() => {
 console.log(auto_trader)
         checkAdmin();
-setTimeout(()=>{
+
 setOpen(!open)
-},20)
+
     }, []);
     const requestCallback = () => {
         axios.post('/backend/api/send-callback', {
