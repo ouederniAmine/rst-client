@@ -113,7 +113,7 @@ const ClientsTable = (props) => {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="cellAction">
+          <div style={{"direction":"ltr"}} className="cellAction">
             <Link to={"/app/clients/"+params.row.id }style={{ textDecoration: "none" }}>
               <div className="viewButton">{t("View")}</div>
             </Link>
