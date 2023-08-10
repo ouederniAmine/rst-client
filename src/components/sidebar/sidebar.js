@@ -13,7 +13,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
-const [open, setOpen] = useState(true);
+const [open, setOpen] = useState(false);
   
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -28,7 +28,6 @@ const [open, setOpen] = useState(true);
     useEffect(() => {
 console.log(auto_trader)
         checkAdmin();
-setOpen(!open)
 setTimeout(()=>{
 setOpen(!open)
 },20)
