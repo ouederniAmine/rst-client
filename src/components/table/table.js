@@ -80,12 +80,7 @@ const userColumns = [
     headerName: t("Withdrawable Balance"),
     width: 200,
   }
-  ,
-  {
-    field: "last_login_info",
-    headerName: t("Last Login Info"),
-    width: 200,
-  }
+ 
  
 ];
   
