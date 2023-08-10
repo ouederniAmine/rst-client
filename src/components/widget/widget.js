@@ -84,7 +84,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter" style={{fontWeight:"bold"}}>
-          {data.type === 1 ? apidata.current_balance : data.title === 2 ? apidata.funds_on_hold : apidata.withdrawable_balance}.00
+          {data.type === 1 ? apidata.current_balance : data.type=== 2 ? apidata.funds_on_hold : apidata.withdrawable_balance}.00
         </span>
       </div>
       <div className="right">
