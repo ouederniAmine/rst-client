@@ -76,7 +76,7 @@ const Home = (props) => {
                             <div class="dashboard section">
                                 <div id="section1" ><div className='center'>  <h2 style={{ fontSize: "24px", fontWeight: "bold" }}>{t("Email")}</h2>   <div style={{ fontSize: "22px" }} class="px-4 py-2">{props.data.email}</div>  </div>
 
-                                    <div className='center'>  <h2 style={{ fontSize: "24px", fontWeight: "bold" }}>{t("Contact Information")}</h2>   <div class="px-4 py-2">{props.data.contact_information}</div>  </div>
+                                    <div className='center'>  <h2 style={{ fontSize: "24px", fontWeight: "bold" }}>{t("Full Name")}</h2>   <div class="px-4 py-2">{props.data.fullname}</div>  </div>
                                 </div>
                                 <div class="vl"></div>
 
