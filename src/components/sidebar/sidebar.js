@@ -59,23 +59,23 @@ console.log(auto_trader)
         const data2 = await response2.json();
        console.log(data2[0].auto_trader)
         if (data2[0].auto_trader==="1") {
-if(document.getElementById('too')){
+
          setTimeout(() => {
      document.getElementById('too').classList.add('on')
 
 document.getElementById('too').value="ON"
-    }, 10)}
+    }, 10)
 
            
             setAutoTrader("on");
         }else{
-if(document.getElementById('too')){
+
 setTimeout(() => {
  document.getElementById('too').value="OFF"
 
     document.getElementById('too').classList.add('off')
 
-    }, 10)}
+    }, 10)
        setAutoTrader("off");
         }
         if (data.isAdmin) {
